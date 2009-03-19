@@ -270,6 +270,7 @@ function xoops_domain_list($op, $fct)
 			$language[$ii] = new XoopsFormSelect(_MD_AM_LANGUAGE, "languages[$ii]", 0, 1 , false);
 			
 		$language[$ii]->addOptionArray($xl->getLangList());
+		$language[$ii]->setExtra('disabled="1"');
 		
 		$critera_y = new CriteriaCompo(new Criteria('dom_pid', $yy));
 		$critera_y->add(new Criteria('dom_name', 'theme')) ;
@@ -280,6 +281,7 @@ function xoops_domain_list($op, $fct)
 		else
 			$themes[$ii] = new XoopsFormSelect(_MD_AM_THEME, "themes[$ii]", 0, 1, false);		
 		$themes[$ii]->addOptionArray($xl->getThemesList());
+		$themes[$ii]->setExtra('disabled="1"');
 		
 		$critera_z = new CriteriaCompo(new Criteria('dom_pid', $yy));
 		$critera_z->add(new Criteria('dom_name', 'startpage')) ;
@@ -291,6 +293,7 @@ function xoops_domain_list($op, $fct)
 			$startmodule[$ii] = new XoopsFormSelect(_MD_AM_START_MODULE, "start_module[$ii]", 0, 1 , false);
 			
 		$startmodule[$ii]->addOptionArray(array_merge(array("" => "(none)"),$xl->getModulesList()));
+		$startmodule[$ii]->setExtra('disabled="1"');
 		
 		$critera_z = new CriteriaCompo(new Criteria('dom_pid', $yy));
 		$critera_z->add(new Criteria('dom_name', 'sitename')) ;
@@ -300,7 +303,7 @@ function xoops_domain_list($op, $fct)
 			$pagetitle[$ii] = new XoopsFormText(_MD_AM_DOMAIN_PAGETITLE, "page_title[$ii]", 23, 255 , $configs_c[0]->getVar('dom_value'));
 		else
 			$pagetitle[$ii] = new XoopsFormText(_MD_AM_DOMAIN_PAGETITLE, "page_title[$ii]", 23, 255 , '');
-			
+			$pagetitle[$ii]->setExtra('disabled="1"');
 		$id[$ii] = new XoopsFormHidden("id[$ii]", $yy);
 		
 		$label_txt = "<a href='".XOOPS_URL."/modules/multisite/admin.php?fct=$fct&op=delete&id=$yy'>Delete</a> | ";
