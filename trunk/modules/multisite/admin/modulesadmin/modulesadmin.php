@@ -114,7 +114,7 @@ function xoops_module_list()
         ';
         $listed_mods[] = $module->getVar('dirname');
     }
-    echo "<tr class='foot'><td colspan='6' align='center'><input type='hidden' name='fct' value='modulesadmin' />
+    echo "<tr class='foot'><td colspan='7' align='center'><input type='hidden' name='fct' value='modulesadmin' />
     <input type='hidden' name='op' value='confirm' />
     <input type='submit' name='submit' value='"._MD_AM_SUBMIT."' />
     </td></tr></table>
