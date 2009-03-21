@@ -182,8 +182,8 @@ function edit_domain_form($id, $op, $fct)
 	include(XOOPS_ROOT_PATH.'/class/xoopsformloader.php');
 	include_once XOOPS_ROOT_PATH.'/class/xoopslists.php';
 
-	    xoops_cp_header();
-	adminMenu(0);
+    xoops_cp_header();
+	adminMenu(XOOPS_MULTISITE_DOMAINS);
 	
 	$xl = new XoopsLists;
 
@@ -235,8 +235,8 @@ function xoops_domain_list($op, $fct)
 	
 	$xl = new XoopsLists;
 	
-        xoops_cp_header();
-	adminMenu(0);
+    xoops_cp_header();
+	adminMenu(XOOPS_MULTISITE_DOMAINS);
 	
     $module_handler =& xoops_getmodulehandler('module','multisite');
     $module =& $module_handler->getByDirname('system');
@@ -258,7 +258,7 @@ function xoops_domain_list($op, $fct)
 		$ii++;
 		$yy = $config->getVar('dom_id');
 				
-		$tray[$ii] = new XoopsFormElementTray($config->getVar('dom_value'),'&nbsp;|&nbsp;');
+		$tray[$ii] = new XoopsFormElementTray($config->getVar('dom_value'),'&nbsp;');
 
 		$critera_x = new CriteriaCompo(new Criteria('dom_pid', $yy));
 		$critera_x->add(new Criteria('dom_name', 'language')) ;
@@ -307,7 +307,7 @@ function xoops_domain_list($op, $fct)
 		$id[$ii] = new XoopsFormHidden("id[$ii]", $yy);
 		
 		$label_txt = "<a href='".XOOPS_URL."/modules/multisite/admin.php?fct=$fct&op=delete&id=$yy'>Delete</a> | ";
-		$label_txt .= "<a href='".XOOPS_URL."/modules/multisite/admin.php?fct=$fct&op=editdomain&id=$yy'>Edit</a> |";
+		$label_txt .= "<a href='".XOOPS_URL."/modules/multisite/admin.php?fct=$fct&op=editdomain&id=$yy'>Edit</a> | ";
 		$label_txt .= "<a href='".XOOPS_URL."/modules/multisite/admin.php?fct=preferences&domain=".sprintf($sprint,$config->getVar('dom_value'))."'>Preferences</a>";
 
 		$label[$ii] = new XoopsFormLabel("", $label_txt);

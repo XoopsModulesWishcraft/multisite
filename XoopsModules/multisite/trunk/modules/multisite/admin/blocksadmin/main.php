@@ -54,8 +54,8 @@ if (isset($previewblock)) {
         redirect_header("admin.php?fct=blocksadmin", 3, implode('<br />', $GLOBALS['xoopsSecurity']->getErrors()));
         exit();
     }
-        xoops_cp_header();
-	adminMenu(0);
+    xoops_cp_header();
+	adminMenu(XOOPS_MULTISITE_BLOCK);
     include_once XOOPS_ROOT_PATH.'/class/template.php';
     $xoopsTpl = new XoopsTpl();
     $xoopsTpl->xoops_setCaching(0);
@@ -114,8 +114,8 @@ if (isset($previewblock)) {
 }
 
 if ( $op == "list" ) {
-        xoops_cp_header();
-	adminMenu(0);
+    xoops_cp_header();
+	adminMenu(XOOPS_MULTISITE_BLOCK);
     list_blocks();
    footer_adminMenu();
  xoops_cp_footer();
@@ -191,20 +191,20 @@ if ( $op == "delete_ok" ) {
 }
 
 if ( $op == "delete" ) {
-        xoops_cp_header();
-	adminMenu(0);
-    delete_block($bid);
-   footer_adminMenu();
- xoops_cp_footer();
+	xoops_cp_header();
+	adminMenu(XOOPS_MULTISITE_BLOCK);
+	delete_block($bid);
+	footer_adminMenu();
+	xoops_cp_footer();
     exit();
 }
 
 if ( $op == "edit" ) {
-        xoops_cp_header();
-	adminMenu(0);
-    edit_block($bid);
-   footer_adminMenu();
- xoops_cp_footer();
+	xoops_cp_header();
+	adminMenu(XOOPS_MULTISITE_BLOCK);
+	edit_block($bid);
+	footer_adminMenu();
+	xoops_cp_footer();
     exit();
 }
 

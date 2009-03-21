@@ -29,7 +29,7 @@
 // Project: The XOOPS Project                                                //
 // ------------------------------------------------------------------------- //
 
-$modversion['name'] = _MD_AM_PCAD;
+$modversion['name'] = _MI_MULTISITE_ADMENU5;
 $modversion['version'] = "";
 $modversion['description'] = "Policies Administration";
 $modversion['author'] = "Simon Roberts (www.chronolabs.org.au)";

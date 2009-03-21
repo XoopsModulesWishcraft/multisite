@@ -229,8 +229,8 @@ function xoops_policy_list($op, $fct, $pos, $num)
 	
 	$xl = new XoopsLists;
 	
-        xoops_cp_header();
-	adminMenu(0);
+    xoops_cp_header();
+	adminMenu(XOOPS_MULTISITE_POLICIES);
 	
     $module_handler =& xoops_getmodulehandler('module','multisite');
     $module =& $module_handler->getByDirname('multisite');

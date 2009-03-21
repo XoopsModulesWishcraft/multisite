@@ -1,5 +1,5 @@
 <?php
-// $Id: xoops_version.php 2 2005-11-02 18:23:29Z skalpa $
+// $Id: system_blocks.php 1999 2008-08-30 11:00:39Z phppp $
 //  ------------------------------------------------------------------------ //
 //                XOOPS - PHP Content Management System                      //
 //                    Copyright (c) 2000 XOOPS.org                           //
@@ -29,16 +29,38 @@
 // Project: The XOOPS Project                                                //
 // ------------------------------------------------------------------------- //
 
-$modversion['name'] = _MD_AM_BKAD;
-$modversion['version'] = "";
-$modversion['description'] = "Side Blocks Administration";
-$modversion['author'] = "";
-$modversion['credits'] = "The MPN SE Project";
-$modversion['help'] = "blocks.html";
-$modversion['license'] = "GPL see LICENSE";
-$modversion['official'] = 1;
-$modversion['image'] = "blocksadmin.gif";
-$modversion['hasAdmin'] = 1;
-$modversion['adminpath'] = "admin.php?fct=blocksadmin";
-$modversion['category'] = XOOPS_MULTISITE_BLOCK;
+function b_multisite_main_show()
+{
+    global $xoopsUser,$xoopsModule;
+    $block = array();
+    $block['lang_home'] = _MB_SYSTEM_HOME;
+    $block['lang_close'] = _CLOSE;
+    $module_handler =& xoops_gethandler('module');
+    $criteria = new CriteriaCompo(new Criteria('hasmain', 1));
+    $criteria->add(new Criteria('isactive', 1));
+    $criteria->add(new Criteria('weight', 0, '>'));
+	$critera_p = new CriteriaCompo(new Criteria('domains', "%|".str_replace("www.","",strtolower($_SERVER['HTTP_HOST'])).'%', 'LIKE'), 'OR');
+	$critera_p->add(new Criteria('domains', "%|all%", 'like')) ;
+	$criteria->add($critera_p);
+    $modules = $module_handler->getObjects($criteria, true);
+    $moduleperm_handler =& xoops_gethandler('groupperm');
+    $groups = is_object($xoopsUser) ? $xoopsUser->getGroups() : XOOPS_GROUP_ANONYMOUS;
+    $read_allowed = $moduleperm_handler->getItemIds('module_read', $groups);
+    foreach (array_keys($modules) as $i) {
+        if (in_array($i, $read_allowed)) {
+            $block['modules'][$i]['name'] = $modules[$i]->getVar('name');
+            $block['modules'][$i]['directory'] = $modules[$i]->getVar('dirname');
+            $sublinks = $modules[$i]->subLink();
+            if ((count($sublinks) > 0) && (!empty($xoopsModule)) && ($i == $xoopsModule->getVar('mid'))) {
+                foreach($sublinks as $sublink){
+                    $block['modules'][$i]['sublinks'][] = array('name' => $sublink['name'], 'url' => XOOPS_URL.'/modules/'.$modules[$i]->getVar('dirname').'/'.$sublink['url']);
+                }
+            } else {
+                $block['modules'][$i]['sublinks'] = array();
+            }
+        }
+    }
+    return $block;
+}
+
 ?>

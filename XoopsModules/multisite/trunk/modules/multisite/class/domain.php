@@ -85,14 +85,32 @@ class MultisiteDomainHandler
     var $_cacheddomains = array();
 
     /**
+     * holds an id of creferences to domain value arrays,
+     *  indexed on module id and category id
+     *
+     * @var     array
+     * @access  private
+     */
+    var $_domain_id = 0;
+	
+	 /**
+     * holds an domain object of creferences to domain of XOOPS_URL,
+     * indexed on module id and category id
+     *
+     * @var     object
+     * @access  private
+     */
+    var $_domain;
+	
+    /**
      * Constructor
      *
      * @param    object  &$db    reference to database object
      */
     function MultisiteDomainHandler(&$db)
     {
-        $this->_cHandler = new MultisiteDomainitemHandler($db);
-        $this->_oHandler = new MultisiteDomainoptionHandler($db);
+        $this->_cHandler = new MultisiteDomainItemHandler($db);
+        $this->_oHandler = new MultisiteDomainOptionHandler($db);	
     }
 
     /**
@@ -231,6 +249,78 @@ class MultisiteDomainHandler
         }
     }
 
+	function set_domain_id($domain)
+	{
+		if (is_a($domain, "MultisiteDomainitem"))
+		{
+			$this->_domain = $domain;
+			$this->_domain_id = $domain->getVar('dom_id'); 
+		}
+	}
+	
+	function get_domain_id($domain)
+	{
+		return $this->_domain_id; 
+	}
+
+    /**
+     * Get domains from a certain category
+     *
+     * @param    int $category   ID of a category
+     * @param    int $module     ID of a module
+     *
+     * @return    array   array of {@link MultisiteDomain}s
+     */
+    function &getConfigByDomainCat($category, $preset, $module=0)
+    {
+
+
+        $confcat_handler =& xoops_gethandler('configcategory');
+        $confcat =& $confcat_handler->get($category);
+
+		$domcat_handler =& xoops_getmodulehandler('domaincategory','multisite');
+		$criteria = new CriteriaCompo();
+		$criteria->add(new Criteria('domcat_name', $confcat->getVar('confcat_name')));
+		$domcat = $domcat_handler->getObjects($criteria);
+
+		if (is_object($domcat[0]))
+		{
+			$domain_handler =& xoops_getmodulehandler('domain','multisite');
+			$criteria = new CriteriaCompo();
+			$criteria->add(new Criteria('dom_pid', $this->_domain_id));
+			$criteria->add(new Criteria('dom_modid', $module));
+			$criteria->add(new Criteria('dom_catid', $domcat[0]->getVar('domcat_id')));
+			if ($domain_handler->getDomainCount($criteria)>0)
+				if (!empty($domcat[0])&&is_object($domcat[0]))
+				{
+					$category = intval($domcat[0]->getVar('domcat_id'));
+					
+					static $_cacheddomains;
+					if (!empty($_cacheddomains[$module][$category])) {
+						return $_cacheddomains[$module][$category];
+					} else {
+						$ret = array();
+						$criteria = new CriteriaCompo(new Criteria('dom_modid', intval($module)));
+						$criteria->add(new Criteria('dom_pid', intval($this->_domain_id)));
+						if (!empty($category)) {
+							$criteria->add(new Criteria('dom_catid', intval($category)));
+						}
+						$domains = $this->getdomains($criteria, true);
+						if (is_array($domains)) {
+							foreach (array_keys($domains) as $i) {
+								$ret[$domains[$i]->getVar('dom_name')] = $domains[$i]->getConfValueForOutput();
+							}
+						}
+						$_cacheddomains[$module][$category] = $ret;
+						return $_cacheddomains[$module][$category];
+					}
+				} else {
+					return $preset;
+				}
+			else
+				return $preset;
+		}
+    }
     /**
      * Make a new {@link MultisiteDomainOption}
      *

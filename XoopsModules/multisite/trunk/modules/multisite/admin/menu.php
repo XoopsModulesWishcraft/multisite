@@ -29,15 +29,15 @@
 // Project: The XOOPS Project                                                //
 // ------------------------------------------------------------------------- //
 global $adminmenu;
-$adminmenu[1]['title'] = _MI_MULTISITE_ADMENU2;
+$adminmenu[1]['title'] = _MI_MULTISITE_ADMENU1;
 $adminmenu[1]['link'] = "admin.php?fct=blocksadmin";
-$adminmenu[2]['title'] = _MI_MULTISITE_ADMENU6;
+$adminmenu[2]['title'] = _MI_MULTISITE_ADMENU2;
 $adminmenu[2]['link'] = "admin.php?fct=preferences";
-$adminmenu[3]['title'] = _MI_MULTISITE_ADMENU17;
-$adminmenu[3]['link'] = "admin.php?fct=domainsadmin";
-$adminmenu[4]['title'] = _MI_MULTISITE_ADMENU18;
-$adminmenu[4]['link'] = "admin.php?fct=policiesadmin";
+$adminmenu[3]['title'] = _MI_MULTISITE_ADMENU3;
+$adminmenu[3]['link'] = "admin.php?fct=modulesadmin";
+$adminmenu[4]['title'] = _MI_MULTISITE_ADMENU4;
+$adminmenu[4]['link'] = "admin.php?fct=domainsadmin";
 $adminmenu[5]['title'] = _MI_MULTISITE_ADMENU5;
-$adminmenu[5]['link'] = "admin.php?fct=modulesadmin";
+$adminmenu[5]['link'] = "admin.php?fct=policiesadmin";
 
 ?>
