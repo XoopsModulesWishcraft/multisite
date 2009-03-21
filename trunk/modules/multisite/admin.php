@@ -41,7 +41,7 @@ if (isset($fct) && $fct == "users") {
 include "../../mainfile.php";
 include XOOPS_ROOT_PATH."/include/cp_functions.php";
 global $xoopsModule;
-include_once XOOPS_PATH."/modules/multisite/include/functions.php";
+include_once XOOPS_ROOT_PATH."/modules/multisite/include/functions.php";
 xoops_loadLanguage('admin', 'system');
 
 $admintest = 0;
@@ -59,27 +59,27 @@ if (is_object($xoopsUser)) {
 }
 
 // include system category definitions
-include_once XOOPS_PATH."/modules/multisite/constants.php";
+include_once XOOPS_ROOT_PATH."/modules/multisite/constants.php";
 $error = false;
 if ($admintest != 0) {
     if (isset($fct) && $fct != '') {
         $fct = preg_replace("/[^a-z0-9_\-]/i", "", $fct);
-        if (file_exists(XOOPS_PATH."/modules/multisite/admin/".$fct."/xoops_version.php")) {
+        if (file_exists(XOOPS_ROOT_PATH."/modules/multisite/admin/".$fct."/xoops_version.php")) {
         
-            if (file_exists(XOOPS_PATH."/modules/multisite/language/".$xoopsConfig['language']."/admin/".$fct.".php")) {
-                include XOOPS_PATH."/modules/multisite/language/".$xoopsConfig['language']."/admin/".$fct.".php";
-            } elseif (file_exists(XOOPS_PATH."/modules/multisite/language/english/admin/".$fct.".php")) {
-                include XOOPS_PATH."/modules/multisite/language/english/admin/".$fct.".php";
+            if (file_exists(XOOPS_ROOT_PATH."/modules/multisite/language/".$xoopsConfig['language']."/admin/".$fct.".php")) {
+                include XOOPS_ROOT_PATH."/modules/multisite/language/".$xoopsConfig['language']."/admin/".$fct.".php";
+            } elseif (file_exists(XOOPS_ROOT_PATH."/modules/multisite/language/english/admin/".$fct.".php")) {
+                include XOOPS_ROOT_PATH."/modules/multisite/language/english/admin/".$fct.".php";
             }
-            include XOOPS_PATH."/modules/multisite/admin/".$fct."/xoops_version.php";
+            include XOOPS_ROOT_PATH."/modules/multisite/admin/".$fct."/xoops_version.php";
             $sysperm_handler =& xoops_gethandler('groupperm');
             $category = !empty($modversion['category']) ? intval($modversion['category']) : 0;
             unset($modversion);
             if ($category > 0) {
                 $groups = $xoopsUser->getGroups();
                 if (in_array(XOOPS_GROUP_ADMIN, $groups) || false != $sysperm_handler->checkRight('system_admin', $category, $groups, $xoopsModule->getVar('mid'))){
-                    if (file_exists(XOOPS_PATH."/modules/multisite/admin/".$fct."/main.php")) {
-                        include_once XOOPS_PATH."/modules/multisite/admin/".$fct."/main.php";
+                    if (file_exists(XOOPS_ROOT_PATH."/modules/multisite/admin/".$fct."/main.php")) {
+                        include_once XOOPS_ROOT_PATH."/modules/multisite/admin/".$fct."/main.php";
                     } else {
                         $error = true;
                     }
@@ -87,8 +87,8 @@ if ($admintest != 0) {
                     $error = true;
                 }
             } elseif ($fct == 'version') {
-                if (file_exists(XOOPS_PATH."/modules/multisite/admin/version/main.php")) {
-                    include_once XOOPS_PATH."/modules/multisite/admin/version/main.php";
+                if (file_exists(XOOPS_ROOT_PATH."/modules/multisite/admin/version/main.php")) {
+                    include_once XOOPS_ROOT_PATH."/modules/multisite/admin/version/main.php";
                 } else {
                     $error = true;
                 }
@@ -119,7 +119,7 @@ if (false != $error) {
         $all_ok = true;
     }
     require_once XOOPS_ROOT_PATH."/class/xoopslists.php";
-    $admin_dir = XOOPS_PATH."/modules/multisite/admin";
+    $admin_dir = XOOPS_ROOT_PATH."/modules/multisite/admin";
     $dirlist = XoopsLists::getDirListAsArray($admin_dir);
     $counter = 0;
     $class = 'even';

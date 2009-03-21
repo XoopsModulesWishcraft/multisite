@@ -6,6 +6,8 @@
 
 //%%%%%%	Admin Module Name  AdminGroup 	%%%%%
 // dont change
+define("_MD_AM_SUCCESSCOPY", "Successful Copy of the setting named: ");
+define("_MD_AM_ERRORCOPY", "Error Copying of the setting named: ");
 define("_AM_DBUPDATED",_MD_AM_DBUPDATED);
 define("_MD_AM_SITEPREF_DOMAIN", 'Domain Preferences Selection');
 define("_AM_SELECT_DOMAIN", 'Select Domain to Set Preferences');

@@ -36,7 +36,7 @@ if ( !defined('XOOPS_INSTALL') )
 
 function xoops_module_list()
 {
-    xoops_cp_header();  adminMenu(0);
+    xoops_cp_header();  adminMenu(XOOPS_MULTISITE_MODULE);
     echo "
     <h4>"._MD_AM_MODADMIN."</h4>
     <form action='admin.php' method='post' name='moduleadmin' id='moduleadmin'>

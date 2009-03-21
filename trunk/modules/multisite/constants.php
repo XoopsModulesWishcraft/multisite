@@ -25,21 +25,10 @@
 //  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307 USA //
 //  ------------------------------------------------------------------------ //
 
-define('XOOPS_MULTISITE_GROUP', 1);
-define('XOOPS_MULTISITE_USER', 2);
-define('XOOPS_MULTISITE_PREF', 3);
-define('XOOPS_MULTISITE_MODULE', 4);
-define('XOOPS_MULTISITE_BLOCK', 5);
-//define('XOOPS_MULTISITE_THEME', 6);
-define('XOOPS_MULTISITE_FINDU', 7);
-define('XOOPS_MULTISITE_MAILU', 8);
-define('XOOPS_MULTISITE_IMAGE', 9);
-define('XOOPS_MULTISITE_AVATAR', 10);
-define('XOOPS_MULTISITE_URANK', 11);
-define('XOOPS_MULTISITE_SMILE', 12);
-define('XOOPS_MULTISITE_BANNER', 13);
-define('XOOPS_MULTISITE_COMMENT', 14);
-define('XOOPS_MULTISITE_TPLSET', 15);
-define('XOOPS_MULTISITE_DOMAINS', 16);
-define('XOOPS_MULTISITE_POLICIES', 17);
+
+define('XOOPS_MULTISITE_BLOCK', 1);
+define('XOOPS_MULTISITE_PREF', 2);
+define('XOOPS_MULTISITE_MODULE', 3);
+define('XOOPS_MULTISITE_DOMAINS', 4);
+define('XOOPS_MULTISITE_POLICIES', 5);
 ?>

@@ -70,11 +70,11 @@ if ( $op == "editgroup")
 
 if ( $op == "edit")
 {
-        xoops_cp_header();
-	adminMenu(0);
+	xoops_cp_header();
+	adminMenu(XOOPS_MULTISITE_POLICIES);
 	@policy_form($_GET['id'], $op, $_GET['fct']);
-   footer_adminMenu();
- xoops_cp_footer();
+	footer_adminMenu();
+	xoops_cp_footer();
 	exit;
 }
 

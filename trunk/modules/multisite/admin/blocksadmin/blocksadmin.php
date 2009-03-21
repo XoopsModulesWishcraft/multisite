@@ -306,7 +306,7 @@ function save_block($bside, $bweight, $bvisible, $btitle, $bcontent, $bctype, $b
     global $xoopsUser;
     if (empty($bmodule)) {
             xoops_cp_header();
-	adminMenu(0);
+	adminMenu(XOOPS_MULTISITE_BLOCK);
         xoops_error(sprintf(_AM_NOTSELNG, _AM_VISIBLEIN));
        footer_adminMenu();
  xoops_cp_footer();
@@ -355,7 +355,7 @@ function save_block($bside, $bweight, $bvisible, $btitle, $bcontent, $bctype, $b
     $newid = $myblock->store();
     if (!$newid) {
             xoops_cp_header();
-	adminMenu(0);
+	adminMenu(XOOPS_MULTISITE_BLOCK);
         $myblock->getHtmlErrors();
        footer_adminMenu();
  xoops_cp_footer();
@@ -398,7 +398,7 @@ function update_block($bid, $bside, $bweight, $bvisible, $btitle, $bcontent, $bc
     global $xoopsConfig;
     if (empty($bmodule)) {
             xoops_cp_header();
-	adminMenu(0);
+	adminMenu(XOOPS_MULTISITE_BLOCK);
         xoops_error(sprintf(_AM_NOTSELNG, _AM_VISIBLEIN));
        footer_adminMenu();
  xoops_cp_footer();
@@ -566,7 +566,7 @@ function clone_block($bid)
 {
     global $xoopsConfig;
         xoops_cp_header();
-	adminMenu(0);
+	adminMenu(XOOPS_MULTISITE_BLOCK);
     $myblock = new MultisiteBlock($bid);
     $db =& Database::getInstance();
     $sql = 'SELECT module_id FROM ' . $db->prefix('block_module_link') . ' WHERE block_id=' . intval($bid);
@@ -627,12 +627,12 @@ function clone_block_ok($bid, $bside, $bweight, $bvisible, $btitle, $bcontent, $
     }
     $newid = $clone->store();
     if (!$newid) {
-            xoops_cp_header();
-	adminMenu(0);
-        $clone->getHtmlErrors();
-       footer_adminMenu();
- xoops_cp_footer();
-        exit();
+		xoops_cp_header();
+		adminMenu(XOOPS_MULTISITE_BLOCK);
+		$clone->getHtmlErrors();
+		footer_adminMenu();
+		xoops_cp_footer();
+		exit();
     }
     if ($clone->getVar('template') != '') {
         $tplfile_handler =& xoops_gethandler('tplfile');

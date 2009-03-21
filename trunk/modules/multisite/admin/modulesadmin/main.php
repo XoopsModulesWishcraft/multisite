@@ -59,7 +59,7 @@ if ( $op == "list" ) {
 }
 
 if ( $op == "confirm" ) {
-    xoops_cp_header();  adminMenu(0);
+    xoops_cp_header();  adminMenu(XOOPS_MULTISITE_MODULE);
 	
     //OpenTable();
     $error = array();
@@ -173,7 +173,7 @@ if ( $op == "submit" ) {
         xoops_load("cpanel", "system");
         XoopsSystemCpanel::flush();
     }
-    xoops_cp_header();  adminMenu(0);
+    xoops_cp_header();  adminMenu(XOOPS_MULTISITE_MODULE);
     if ( count($ret) > 0 ) {
         foreach ($ret as $msg) {
             if ($msg != '') {
@@ -194,7 +194,7 @@ if ($op == 'install') {
         $msgs ='<img src="'.XOOPS_URL.'/modules/'.$mod->getVar('dirname').'/'.trim($mod->getInfo('image')).'" alt="" />';
     }
     $msgs .= '<br /><span style="font-size:smaller;">'.$mod->getVar('name').'</span><br /><br />'._MD_AM_RUSUREINS;
-    xoops_cp_header();  adminMenu(0);
+    xoops_cp_header();  adminMenu(XOOPS_MULTISITE_MODULE);
     xoops_confirm(array('module' => $module, 'op' => 'install_ok', 'fct' => 'modulesadmin'), 'admin.php', $msgs, _MD_AM_INSTALL);
     xoops_cp_footer(); footer_adminMenu();
     exit();
@@ -206,7 +206,7 @@ if ($op == 'install_ok') {
     // Flush cache files for cpanel GUIs
     xoops_load("cpanel", "system");
     XoopsSystemCpanel::flush();
-    xoops_cp_header();  adminMenu(0);
+    xoops_cp_header();  adminMenu(XOOPS_MULTISITE_MODULE);
     if (count($ret) > 0) {
         foreach ($ret as $msg) {
             if ($msg != '') {
@@ -226,7 +226,7 @@ if ($op == 'uninstall') {
         $msgs ='<img src="'.XOOPS_URL.'/modules/'.$mod->getVar('dirname').'/'.trim($mod->getInfo('image')).'" alt="" />';
     }
     $msgs .= '<br /><span style="font-size:smaller;">'.$mod->getVar('name').'</span><br /><br />'._MD_AM_RUSUREUNINS;
-    xoops_cp_header();  adminMenu(0);
+    xoops_cp_header();  adminMenu(XOOPS_MULTISITE_MODULE);
     xoops_confirm(array('module' => $module, 'op' => 'uninstall_ok', 'fct' => 'modulesadmin'), 'admin.php', $msgs, _YES);
     xoops_cp_footer(); footer_adminMenu();
     exit();
@@ -238,7 +238,7 @@ if ($op == 'uninstall_ok') {
     // Flush cache files for cpanel GUIs
     xoops_load("cpanel", "system");
     XoopsSystemCpanel::flush();
-    xoops_cp_header();  adminMenu(0);
+    xoops_cp_header();  adminMenu(XOOPS_MULTISITE_MODULE);
     if (count($ret) > 0) {
         foreach ($ret as $msg) {
             if ($msg != '') {
@@ -258,7 +258,7 @@ if ($op == 'update') {
         $msgs ='<img src="'.XOOPS_URL.'/modules/'.$mod->getVar('dirname').'/'.trim($mod->getInfo('image')).'" alt="" />';
     }
     $msgs .= '<br /><span style="font-size:smaller;">'.$mod->getVar('name').'</span><br /><br />'._MD_AM_RUSUREUPD;
-    xoops_cp_header();  adminMenu(0);
+    xoops_cp_header();  adminMenu(XOOPS_MULTISITE_MODULE);
     xoops_confirm(array('dirname' => $module, 'op' => 'update_ok', 'fct' => 'modulesadmin'), 'admin.php', $msgs, _MD_AM_UPDATE);
     xoops_cp_footer(); footer_adminMenu();
     exit();
@@ -278,7 +278,7 @@ if ($op == 'update_ok') {
     $temp_name = $module->getVar('name');
     $module->loadInfoAsVar($dirname);
     $module->setVar('name', $temp_name);
-    xoops_cp_header();  adminMenu(0);
+    xoops_cp_header();  adminMenu(XOOPS_MULTISITE_MODULE);
     if (!$module_handler->insert($module)) {
         echo '<p>Could not update '.$module->getVar('name').'</p>';
         echo "<br /><a href='admin.php?fct=modulesadmin'>"._MD_AM_BTOMADMIN."</a>";
