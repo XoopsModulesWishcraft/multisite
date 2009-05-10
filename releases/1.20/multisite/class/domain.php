@@ -324,27 +324,27 @@ class MultisiteDomainHandler
 			if ($domain_handler->getDomainCount($criteria)>0) {
 				$domain_obj =$domain_handler->getDomain($criteria);
 				if ($withoptions == true) {
-         		   $domain_obj[0]->setConfOptions($this->getDomainOptions(new Criteria('conf_id', $domain_obj[0]->getVar('dom_id'))));
+         		   $domain_obj->setConfOptions($this->getDomainOptions(new Criteria('dom_id', $domain_obj->getVar('dom_id'))));
         		}
 				if ($oninsert==true)
-					$domain_obj[0]->setVar('dom_value', $config->getVar('conf_value'));
+					$domain_obj->setVar('dom_value', $config->getVar('conf_value'));
 
 				$newconfig = new XoopsConfigItem();
 				$newconfig->setVar('conf_id', $config->getVar('conf_id'));
-				$newconfig->setVar('conf_modid', $domain_obj[0]->getVar('dom_modid'));
-				$newconfig->setVar('conf_catid', $domain_obj[0]->getVar('dom_catid'));				
-				$newconfig->setVar('conf_name', $domain_obj[0]->getVar('dom_name'));
-				$newconfig->setVar('conf_title', $domain_obj[0]->getVar('dom_title'));				
-				$newconfig->setVar('conf_value', $domain_obj[0]->getVar('dom_value'));
-				$newconfig->setVar('conf_desc', $domain_obj[0]->getVar('dom_desc'));				
-				$newconfig->setVar('conf_formtype', $domain_obj[0]->getVar('dom_formtype'));
-				$newconfig->setVar('conf_valuetype', $domain_obj[0]->getVar('dom_valuetype'));				
-				$newconfig->setVar('conf_order', $domain_obj[0]->getVar('dom_order'));
+				$newconfig->setVar('conf_modid', $domain_obj->getVar('dom_modid'));
+				$newconfig->setVar('conf_catid', $domain_obj->getVar('dom_catid'));				
+				$newconfig->setVar('conf_name', $domain_obj->getVar('dom_name'));
+				$newconfig->setVar('conf_title', $domain_obj->getVar('dom_title'));				
+				$newconfig->setVar('conf_value', $domain_obj->getVar('dom_value'));
+				$newconfig->setVar('conf_desc', $domain_obj->getVar('dom_desc'));				
+				$newconfig->setVar('conf_formtype', $domain_obj->getVar('dom_formtype'));
+				$newconfig->setVar('conf_valuetype', $domain_obj->getVar('dom_valuetype'));				
+				$newconfig->setVar('conf_order', $domain_obj->getVar('dom_order'));
 				if ($withoptions == true) {
 					$configOptionHandler = new XoopsConfigOptionHandler($xoopsDB);
          		   	$config->setConfOptions($configOptionHandler->getConfigOptions(new Criteria('conf_id', $config->getVar('conf_id'))));
         		}
-				return $config;
+				return $newconfig;
 			} else {
 				if ($withoptions == true) {
 					$configOptionHandler = new XoopsConfigOptionHandler($xoopsDB);
@@ -352,6 +352,12 @@ class MultisiteDomainHandler
         		}
 				return $config;
 			}
+		} else {
+			if ($withoptions == true) {
+				$configOptionHandler = new XoopsConfigOptionHandler($xoopsDB);
+				$config->setConfOptions($configOptionHandler->getConfigOptions(new Criteria('conf_id', $config->getVar('conf_id'))));
+			}
+			return $config;
 		}		
 	}
 
@@ -414,7 +420,25 @@ class MultisiteDomainHandler
 
 				return $domain;
 			}
-		}		
+		} else {
+			$domain = new MultisiteDomainitem();
+			$domain->setVar('dom_modid', $config->getVar('conf_modid'));
+			$domain->setVar('dom_catid', $config->getVar('conf_catid'));				
+			$domain->setVar('dom_name', $config->getVar('conf_name'));
+			$domain->setVar('dom_title', $config->getVar('conf_title'));				
+			$domain->setVar('dom_value', $config->getVar('conf_value'));
+			$domain->setVar('dom_desc', $config->getVar('conf_desc'));				
+			$domain->setVar('dom_formtype', $config->getVar('conf_formtype'));
+			$domain->setVar('dom_valuetype', $config->getVar('conf_valuetype'));				
+			$domain->setVar('dom_order', $config->getVar('conf_order'));
+			if ($withoptions == true) {
+				$configOptionHandler = new XoopsConfigOptionHandler($xoopsDB);
+				$domain->setConfOptions($configOptionHandler->getConfigOptions(new Criteria('conf_id', $config->getVar('conf_id'))));
+			}
+			$domain->setVar('dom_pid', $this->_domain_id);				
+
+			return $domain;
+		}
 	}
 
     /**
