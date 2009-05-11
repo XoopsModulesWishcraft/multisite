@@ -18,6 +18,7 @@ define("_MI_MULTISITE_ADMENU2","Preferences");
 define("_MI_MULTISITE_ADMENU3","Modules");
 define("_MI_MULTISITE_ADMENU4", "Domains");
 define("_MI_MULTISITE_ADMENU5", "Access Policies");
+define("_MI_MULTISITE_ADMENU6", "Defines");
 
 define("_MI_MULTISITE_BNAME1", "Main Menu");
 

@@ -1,5 +1,5 @@
 <?php
-// $Id: constants.php 2 2005-11-02 18:23:29Z skalpa $
+// $Id: xoops_version.php 2 2005-11-02 18:23:29Z skalpa $
 //  ------------------------------------------------------------------------ //
 //                XOOPS - PHP Content Management System                      //
 //                    Copyright (c) 2000 XOOPS.org                           //
@@ -24,12 +24,22 @@
 //  along with this program; if not, write to the Free Software              //
 //  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307 USA //
 //  ------------------------------------------------------------------------ //
+// Author: Kazumi Ono (AKA onokazu)                                          //
+// URL: http://www.myweb.ne.jp/, http://www.xoops.org/, http://jp.xoops.org/ //
+// Project: The XOOPS Project                                                //
+// ------------------------------------------------------------------------- //
 
+$modversion['name'] = _MD_AM_PREF;
+$modversion['version'] = "";
+$modversion['description'] = "XOOPS Site Preferences";
+$modversion['author'] = "";
+$modversion['credits'] = "The XOOPS Project";
+$modversion['help'] = "preferences.html";
+$modversion['license'] = "GPL see LICENSE";
+$modversion['official'] = 1;
+$modversion['image'] = "pref.gif";
 
-define('XOOPS_MULTISITE_BLOCK', 1);
-define('XOOPS_MULTISITE_PREF', 2);
-define('XOOPS_MULTISITE_MODULE', 3);
-define('XOOPS_MULTISITE_DOMAINS', 4);
-define('XOOPS_MULTISITE_POLICIES', 5);
-define('XOOPS_MULTISITE_DEFINES', 6);
+$modversion['hasAdmin'] = 1;
+$modversion['adminpath'] = "admin.php?fct=preferences";
+$modversion['category'] = XOOPS_MULTISITE_PREF;
 ?>

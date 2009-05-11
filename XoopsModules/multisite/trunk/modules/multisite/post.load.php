@@ -11,33 +11,8 @@
 		error_reporting(E_ALL);
 		if ($module->getVar('isactive')==true)
 		{
-		
-			/**#@-*/
-			// Check Policies
-			$policy_handler =& xoops_getmodulehandler('policy', 'multisite');
-			$critera_p = new CriteriaCompo(new Criteria('domains', "%|".str_replace("www.","",strtolower($_SERVER['HTTP_HOST'])).'%', 'LIKE'), 'OR');
-			$critera_p->add(new Criteria('domains', "%|all%", 'like')) ;
-			$policies = $policy_handler->getObjects($critera_p);
-			foreach ($policies as $policy)
-				@$policy_handler->checkPolicy($policy);
+
 			
-			// ################# Load Config Settings ##############
-			$domain_handler =& xoops_getmodulehandler('domain', 'multisite');
-			$purl = parse_url(XOOPS_URL);
-		//$domain_handler =& xoops_getmodulehandler('domain','multisite');
-			$criteria = new CriteriaCompo();
-			$criteria->add(new Criteria('dom_name', 'domain'));
-			$criteria->add(new Criteria('dom_value', $purl['host']));
-			$domain = $domain_handler->getDomains($criteria);
-			if ($domain_handler->getDomainCount($criteria)>0)
-			{
-				$domain_handler->set_domain_id($domain[0]);
-				if (!defined("XOOPS_DOMAIN_ID"))
-					define("XOOPS_DOMAIN_ID", $domain_handler->get_domain_id());
-
-			}
-
-			$xoopsConfig = $domain_handler->getConfigByDomainCat(XOOPS_CONF, $xoopsConfig);
 			
 			// Disable gzip compression if PHP is run under CLI mode
 			// To be refactored

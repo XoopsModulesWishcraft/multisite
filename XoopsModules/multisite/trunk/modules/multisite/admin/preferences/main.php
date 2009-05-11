@@ -32,6 +32,8 @@
 if ( !is_object($xoopsUser) || !is_object($xoopsModule) || !$xoopsUser->isAdmin($xoopsModule->mid()) ) {
     exit("Access Denied");
 } else {
+
+
     $op = 'list';
     if (isset($_POST)) {
         foreach ( $_POST as $k => $v ) {
@@ -187,6 +189,7 @@ if ( !is_object($xoopsUser) || !is_object($xoopsModule) || !$xoopsUser->isAdmin(
         echo '<h4>'._MD_AM_MODULEPREF.'</h4><ul>';
         for ($i = 0; $i < $modulecount; $i++) {
 			switch ($modules[$i]->dirname()) {
+			case "multisite":
 			case "system":
 				break;
 			default:
@@ -275,6 +278,12 @@ if ( !is_object($xoopsUser) || !is_object($xoopsModule) || !$xoopsUser->isAdmin(
                     $ele = new XoopsFormTextArea($title, $domains[$i]->getVar('dom_name'), $myts->htmlspecialchars($domains[$i]->getConfValueForOutput()), 5, 50);
                 }
                 break;
+            case 'domain':
+                $ele = new XoopsFormSelectDomains($title, $domains[$i]->getVar('dom_name'), $domains[$i]->getConfValueForOutput());
+				break;
+            case 'multidomain':
+		    	$ele = new XoopsFormSelectDomains($title, $domains[$i]->getVar('dom_name'), $domains[$i]->getConfValueForOutput(), 5, true);
+				break;
             case 'select':
                 $ele = new XoopsFormSelect($title, $domains[$i]->getVar('dom_name'), $domains[$i]->getConfValueForOutput());
                 $options = $domain_handler->getDomainOptions(new Criteria('dom_id', $domains[$i]->getVar('dom_id')));
@@ -433,6 +442,12 @@ if ( !is_object($xoopsUser) || !is_object($xoopsModule) || !$xoopsUser->isAdmin(
                     $ele->addOption($optval, $optkey);
                 }
                 break;
+            case 'domain':
+                $ele = new XoopsFormSelectDomains($title, $domains[$i]->getVar('dom_name'), $domains[$i]->getConfValueForOutput());
+				break;
+            case 'multidomain':
+		    	$ele = new XoopsFormSelectDomains($title, $domains[$i]->getVar('dom_name'), $domains[$i]->getConfValueForOutput(), 5, true);
+				break;
             case 'select_multi':
                 $ele = new XoopsFormSelect($title, $config[$i]->getVar('dom_name'), $config[$i]->getConfValueForOutput(), 5, true);
                 $options = $domain_handler->getDomainOptions(new Criteria('dom_id', $config[$i]->getVar('dom_id')));

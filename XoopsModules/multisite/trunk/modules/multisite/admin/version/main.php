@@ -103,5 +103,6 @@ echo "<br /><br /><br /><br /><br />";
 echo "<a href=\"javascript:window.close();\">Close</a>";
 echo "<br /><br /><br /><br /><br /><br />";
 echo "</td></tr></table></div>";
-echo "</body></html>";
+echo "
+</body></html>";
 ?>

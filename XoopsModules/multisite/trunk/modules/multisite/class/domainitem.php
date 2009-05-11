@@ -75,7 +75,7 @@ class MultisiteDomainitem extends XoopsObject
         $this->initVar('dom_catid', XOBJ_DTYPE_INT, null, false);
         $this->initVar('dom_name', XOBJ_DTYPE_OTHER);
         $this->initVar('dom_title', XOBJ_DTYPE_TXTBOX);
-        $this->initVar('dom_value', XOBJ_DTYPE_TXTAREA);
+        $this->initVar('dom_value', XOBJ_DTYPE_OTHER);
         $this->initVar('dom_desc', XOBJ_DTYPE_OTHER);
         $this->initVar('dom_formtype', XOBJ_DTYPE_OTHER);
         $this->initVar('dom_valuetype', XOBJ_DTYPE_OTHER);
