@@ -136,11 +136,31 @@ class MultisiteDomainHandler
     {
         $domain =& $this->_cHandler->get($id);
         if ($withoptions == true) {
-            $domain->setConfOptions($this->getdomainOptions(new Criteria('dom_id', $id)));
+            $domain->setConfOptions($this->getDomainOptions(new Criteria('dom_id', $id)));
         }
         return $domain;
     }
 
+    /**
+     * insert a new domain options in the database
+     *
+     * @param    object  &$domain    reference to the {@link MultisiteDomainItem}
+     */
+
+    function insertDomainOptions($options, &$domain)
+    {
+        $count = count($options);
+        $dom_id = $domain->getVar('dom_id');
+        for ($i = 0; $i < $count; $i++) {
+            $options[$i]->setVar('dom_id', $dom_id);
+            if (!$this->_oHandler->insert($options[$i])) {
+                foreach($options[$i]->getErrors() as $msg){
+                    $domain->setErrors($msg);
+                }
+            }
+        }
+	}
+	
     /**
      * insert a new domain in the database
      *
@@ -152,16 +172,7 @@ class MultisiteDomainHandler
             return false;
         }
         $options =& $domain->getConfOptions();
-        $count = count($options);
-        $dom_id = $domain->getVar('dom_id');
-        for ($i = 0; $i < $count; $i++) {
-            $options[$i]->setVar('dom_id', $dom_id);
-            if (!$this->_oHandler->insert($options[$i])) {
-                foreach($options[$i]->getErrors() as $msg){
-                    $domain->setErrors($msg);
-                }
-            }
-        }
+		@$this->insertDomainOptions($options, $domain);
         if (!empty($this->_cacheddomains[$domain->getVar('dom_modid')][$domain->getVar('dom_catid')])) {
             unset ($this->_cacheddomains[$domain->getVar('dom_modid')][$domain->getVar('dom_catid')]);
         }
@@ -181,7 +192,7 @@ class MultisiteDomainHandler
         $options =& $domain->getConfOptions();
         $count = count($options);
         if ($count == 0) {
-            $options = $this->getdomainOptions(new Criteria('dom_id', $domain->getVar('dom_id')));
+            $options = $this->getDomainOptions(new Criteria('dom_id', $domain->getVar('dom_id')));
             $count = count($options);
         }
         if (is_array($options) && $count > 0) {
@@ -238,12 +249,27 @@ class MultisiteDomainHandler
             if (!empty($category)) {
                 $criteria->add(new Criteria('dom_catid', intval($category)));
             }
-            $domains = $this->getdomains($criteria, true);
+            $domains = $this->getDomains($criteria, true);
             if (is_array($domains)) {
                 foreach (array_keys($domains) as $i) {
                     $ret[$domains[$i]->getVar('dom_name')] = $domains[$i]->getConfValueForOutput();
                 }
-            }
+            } else {
+				$config_handler = xoops_gethandler('config');
+				$ret = array();
+				$criteria = new CriteriaCompo(new Criteria('conf_modid', intval($module)));
+				if (! empty($category)) {
+					$criteria->add(new Criteria('conf_catid', intval($category)));
+				}
+				$configs = $config_handler->getConfigs($criteria, true);
+				if (is_array($configs)) {
+					foreach(array_keys($configs) as $i) {
+						$ret[$configs[$i]->getVar('conf_name')] = $configs[$i]->getConfValueForOutput();
+					}
+				}
+				$_cacheddomains[$module][$category] = $ret;
+				return $_cacheddomains[$module][$category];
+			}
             $_cacheddomains[$module][$category] = $ret;
             return $_cacheddomains[$module][$category];
         }
@@ -258,9 +284,161 @@ class MultisiteDomainHandler
 		}
 	}
 	
-	function get_domain_id($domain)
+	function get_domain_id()
 	{
 		return $this->_domain_id; 
+	}
+	
+    /**
+     * Get converts a XoopsConfigItem to a MultisiteDomainItem
+     *
+     * @param    int $category   ID of a category
+     * @param    int $module     ID of a module
+     *
+     * @return    array   array of {@link MultisiteDomain}s
+     */
+	
+	function getConfigItem($config, $withoptions = false, $oninsert= false)
+	{
+		global $xoopsDB;
+		
+        $confcat_handler =& xoops_gethandler('configcategory');
+        $confcat =& $confcat_handler->get($config->getVar('conf_catid'));	
+
+		if (is_object($confcat))
+		{
+			$domcat_handler =& xoops_getmodulehandler('domaincategory','multisite');
+			$criteria = new CriteriaCompo();
+			$criteria->add(new Criteria('domcat_name', $confcat->getVar('confcat_name')));
+			$domcat = $domcat_handler->getObjects($criteria);
+		}
+		
+		if (is_object($domcat[0]))
+		{
+			$domain_handler =& xoops_getmodulehandler('domain','multisite');
+			$criteria = new CriteriaCompo();
+			$criteria->add(new Criteria('dom_pid', $this->_domain_id));
+			$criteria->add(new Criteria('dom_modid', $config->getVar('conf_modid')));
+			$criteria->add(new Criteria('dom_name', $config->getVar('conf_name')));			 
+			$criteria->add(new Criteria('dom_catid', $domcat[0]->getVar('domcat_id')));
+			if ($domain_handler->getDomainCount($criteria)>0) {
+				$domain_obj =$domain_handler->getDomain($criteria);
+				if ($withoptions == true) {
+         		   $domain_obj->setConfOptions($this->getDomainOptions(new Criteria('dom_id', $domain_obj->getVar('dom_id'))));
+        		}
+				if ($oninsert==true)
+					$domain_obj->setVar('dom_value', $config->getVar('conf_value'));
+
+				$newconfig = new XoopsConfigItem();
+				$newconfig->setVar('conf_id', $config->getVar('conf_id'));
+				$newconfig->setVar('conf_modid', $domain_obj->getVar('dom_modid'));
+				$newconfig->setVar('conf_catid', $domain_obj->getVar('dom_catid'));				
+				$newconfig->setVar('conf_name', $domain_obj->getVar('dom_name'));
+				$newconfig->setVar('conf_title', $domain_obj->getVar('dom_title'));				
+				$newconfig->setVar('conf_value', $domain_obj->getVar('dom_value'));
+				$newconfig->setVar('conf_desc', $domain_obj->getVar('dom_desc'));				
+				$newconfig->setVar('conf_formtype', $domain_obj->getVar('dom_formtype'));
+				$newconfig->setVar('conf_valuetype', $domain_obj->getVar('dom_valuetype'));				
+				$newconfig->setVar('conf_order', $domain_obj->getVar('dom_order'));
+				if ($withoptions == true) {
+					$configOptionHandler = new XoopsConfigOptionHandler($xoopsDB);
+         		   	$config->setConfOptions($configOptionHandler->getConfigOptions(new Criteria('conf_id', $config->getVar('conf_id'))));
+        		}
+				return $newconfig;
+			} else {
+				if ($withoptions == true) {
+					$configOptionHandler = new XoopsConfigOptionHandler($xoopsDB);
+         		   	$config->setConfOptions($configOptionHandler->getConfigOptions(new Criteria('conf_id', $config->getVar('conf_id'))));
+        		}
+				return $config;
+			}
+		} else {
+			if ($withoptions == true) {
+				$configOptionHandler = new XoopsConfigOptionHandler($xoopsDB);
+				$config->setConfOptions($configOptionHandler->getConfigOptions(new Criteria('conf_id', $config->getVar('conf_id'))));
+			}
+			return $config;
+		}		
+	}
+
+
+    /**
+     * Get converts a XoopsConfigItem to a MultisiteDomainItem
+     *
+     * @param    int $category   ID of a category
+     * @param    int $module     ID of a module
+     *
+     * @return    array   array of {@link MultisiteDomain}s
+     */
+	
+	function convertConfigItem($config, $withoptions = false, $oninsert= false)
+	{
+		global $xoopsDB;
+        $confcat_handler =& xoops_gethandler('configcategory');
+        $confcat =& $confcat_handler->get($config->getVar('conf_catid'));	
+
+		if (is_object($confcat))
+		{
+			$domcat_handler =& xoops_getmodulehandler('domaincategory','multisite');
+			$criteria = new CriteriaCompo();
+			$criteria->add(new Criteria('domcat_name', $confcat->getVar('confcat_name')));
+			$domcat = $domcat_handler->getObjects($criteria);
+		}
+		
+		if (is_object($domcat[0]))
+		{
+			$domain_handler =& xoops_getmodulehandler('domain','multisite');
+			$criteria = new CriteriaCompo();
+			$criteria->add(new Criteria('dom_pid', $this->_domain_id));
+			$criteria->add(new Criteria('dom_modid', $config->getVar('conf_modid')));
+			$criteria->add(new Criteria('dom_name', $config->getVar('conf_name')));			 
+			$criteria->add(new Criteria('dom_catid', $domcat[0]->getVar('domcat_id')));
+			if ($domain_handler->getDomainCount($criteria)>0) {
+				$domain_obj =$domain_handler->getDomain($criteria);
+				if ($withoptions == true) {
+         		   $domain_obj[0]->setConfOptions($this->getDomainOptions(new Criteria('conf_id', $domain_obj[0]->getVar('dom_id'))));
+        		}
+				if ($oninsert==true)
+					$domain_obj[0]->setVar('dom_value', $config->getVar('conf_value'));
+				return $domain_obj[0];
+			} else {
+				$domain = new MultisiteDomainitem();
+				$domain->setVar('dom_modid', $config->getVar('conf_modid'));
+				$domain->setVar('dom_catid', $config->getVar('conf_catid'));				
+				$domain->setVar('dom_name', $config->getVar('conf_name'));
+				$domain->setVar('dom_title', $config->getVar('conf_title'));				
+				$domain->setVar('dom_value', $config->getVar('conf_value'));
+				$domain->setVar('dom_desc', $config->getVar('conf_desc'));				
+				$domain->setVar('dom_formtype', $config->getVar('conf_formtype'));
+				$domain->setVar('dom_valuetype', $config->getVar('conf_valuetype'));				
+				$domain->setVar('dom_order', $config->getVar('conf_order'));
+				if ($withoptions == true) {
+					$configOptionHandler = new XoopsConfigOptionHandler($xoopsDB);
+         		   	$domain->setConfOptions($configOptionHandler->getConfigOptions(new Criteria('conf_id', $config->getVar('conf_id'))));
+        		}
+				$domain->setVar('dom_pid', $this->_domain_id);				
+
+				return $domain;
+			}
+		} else {
+			$domain = new MultisiteDomainitem();
+			$domain->setVar('dom_modid', $config->getVar('conf_modid'));
+			$domain->setVar('dom_catid', $config->getVar('conf_catid'));				
+			$domain->setVar('dom_name', $config->getVar('conf_name'));
+			$domain->setVar('dom_title', $config->getVar('conf_title'));				
+			$domain->setVar('dom_value', $config->getVar('conf_value'));
+			$domain->setVar('dom_desc', $config->getVar('conf_desc'));				
+			$domain->setVar('dom_formtype', $config->getVar('conf_formtype'));
+			$domain->setVar('dom_valuetype', $config->getVar('conf_valuetype'));				
+			$domain->setVar('dom_order', $config->getVar('conf_order'));
+			if ($withoptions == true) {
+				$configOptionHandler = new XoopsConfigOptionHandler($xoopsDB);
+				$domain->setConfOptions($configOptionHandler->getConfigOptions(new Criteria('conf_id', $config->getVar('conf_id'))));
+			}
+			$domain->setVar('dom_pid', $this->_domain_id);				
+
+			return $domain;
+		}
 	}
 
     /**
@@ -271,7 +449,7 @@ class MultisiteDomainHandler
      *
      * @return    array   array of {@link MultisiteDomain}s
      */
-    function &getConfigByDomainCat($category, $preset, $module=0)
+    function &getConfigByDomainCat($category, $module=0)
     {
 
 
@@ -293,7 +471,7 @@ class MultisiteDomainHandler
 			$criteria->add(new Criteria('dom_pid', $this->_domain_id));
 			$criteria->add(new Criteria('dom_modid', $module));
 			$criteria->add(new Criteria('dom_catid', $domcat[0]->getVar('domcat_id')));
-			if ($domain_handler->getDomainCount($criteria)>0)
+			if ($domain_handler->getDomainCount($criteria)>0) {
 				if (!empty($domcat[0])&&is_object($domcat[0]))
 				{
 					$category = intval($domcat[0]->getVar('domcat_id'));
@@ -308,7 +486,7 @@ class MultisiteDomainHandler
 						if (!empty($category)) {
 							$criteria->add(new Criteria('dom_catid', intval($category)));
 						}
-						$domains = $this->getdomains($criteria, true);
+						$domains = $this->getDomains($criteria, true);
 						if (is_array($domains)) {
 							foreach (array_keys($domains) as $i) {
 								$ret[$domains[$i]->getVar('dom_name')] = $domains[$i]->getConfValueForOutput();
@@ -318,10 +496,39 @@ class MultisiteDomainHandler
 						return $_cacheddomains[$module][$category];
 					}
 				} else {
-					return $preset;
+					$config_handler = xoops_gethandler('config');
+					$ret = array();
+					$criteria = new CriteriaCompo(new Criteria('conf_modid', intval($module)));
+					if (! empty($category)) {
+						$criteria->add(new Criteria('conf_catid', intval($category)));
+					}
+					$configs = $config_handler->getConfigs($criteria, true);
+					if (is_array($configs)) {
+						foreach(array_keys($configs) as $i) {
+							$ret[$configs[$i]->getVar('conf_name')] = $configs[$i]->getConfValueForOutput();
+						}
+					}
+					$_cacheddomains[$module][$category] = $ret;
+					return $_cacheddomains[$module][$category];
+
 				}
-			else
-				return $preset;
+			} else {
+				$config_handler = xoops_gethandler('config');
+				$ret = array();
+				$criteria = new CriteriaCompo(new Criteria('conf_modid', intval($module)));
+				if (! empty($category)) {
+					$criteria->add(new Criteria('conf_catid', intval($category)));
+				}
+				$configs = $config_handler->getConfigs($criteria, true);
+				if (is_array($configs)) {
+					foreach(array_keys($configs) as $i) {
+						$ret[$configs[$i]->getVar('conf_name')] = $configs[$i]->getConfValueForOutput();
+					}
+				}
+				$_cacheddomains[$module][$category] = $ret;
+				return $_cacheddomains[$module][$category];
+
+			}
 		}
     }
     /**

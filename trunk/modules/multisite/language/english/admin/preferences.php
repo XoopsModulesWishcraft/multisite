@@ -191,11 +191,49 @@ define("_MD_AM_SENDMAILPATHDESC", "Path to the sendmail program (or substitute) 
 define("_MD_AM_THEMEOK", "Selectable themes");
 define("_MD_AM_THEMEOKDSC", "Choose themes that users can select as the default theme");
 
+// SOAP Clauses
+define("_MD_AM_SOAP_CLIENT", "SOAP - SOAP API");
+define("_MD_AM_SOAP_CLIENTDESC","This is the address of the soap server.");
+define("_MD_AM_SOAP_PROVISION", "SOAP - Provision");
+define("_MD_AM_SOAP_PROVISIONDESC","If you want the new user provisioned, say 'yes'");
+define("_MD_AM_SOAP_PROVISIONGROUP", "SOAP - Rank to Provision");
+define("_MD_AM_SOAP_PROVISIONGROUPDESC","This is the ranks a new user from the soap server is put in.");
+
+define("_MD_AM_SOAP_WSDL", "SOAP - SOAP WSDL");
+define("_MD_AM_SOAP_WSDLDESC","If you need a wdsl soap service enable this option.");
+define("_MD_AM_SOAP_USERNAME", "SOAP - SOAP Username");
+define("_MD_AM_SOAP_USERNAMEDESC","This is the username of your account on the soap server.");
+define("_MD_AM_SOAP_PASSWORD", "SOAP - SOAP Password");
+define("_MD_AM_SOAP_PASSWORDDESC","If you need a password with the soap service put it in here.");
+define("_MD_AM_SOAP_KEEPCLIENT", "SOAP - Client Alive");
+define("_MD_AM_SOAP_KEEPCLIENTDESC","Keep The Soap Client Alive.");
+define("_MD_AM_SOAP_FILTERPERSON", "SOAP - Special Accounts");
+define("_MD_AM_SOAP_FILTERPERSONDESC","Special Accounts that use Xoops Authentication.");
+define("_MD_AM_SOAP_CLIENTPROXYHOST", "SOAP - Proxy Hostname");
+define("_MD_AM_SOAP_CLIENTPROXYHOSTDESC","SOAP Servers Proxy Server.");
+define("_MD_AM_SOAP_CLIENTPROXYPORT", "SOAP - Proxy port");
+define("_MD_AM_SOAP_CLIENTPROXYPORTDESC","SOAP Servers Proxy Server Port Number <br>ie: 0 - 65535");
+define("_MD_AM_SOAP_CLIENTPROXYUSERNAME", "SOAP - Proxy Username");
+define("_MD_AM_SOAP_CLIENTPROXYUSERNAMEDESC","SOAP Servers Proxy Server Username");
+define("_MD_AM_SOAP_CLIENTPROXYPASSWORD", "SOAP - Proxy Password");
+define("_MD_AM_SOAP_CLIENTPROXYPASSWORDDESC","SOAP Servers Proxy Server Password.");
+define("_MD_AM_SOAP_SOAP_TIMEOUT", "SOAP - SOAP Timeout");
+define("_MD_AM_SOAP_SOAP_TIMEOUTDESC","Keep The Soap Query Alive for <strong>xx</strong> seconds.");
+define("_MD_AM_SOAP_SOAP_RESPONSETIMEOUT", "SOAP - SOAP Response Timeout");
+define("_MD_AM_SOAP_SOAP_RESPONSETIMEOUTDESC","Keep The Soap Query Alive for <strong>xx</strong> seconds.");
+define("_MD_AM_SOAP_FIELDMAPPING","Xoops-Auth server fields mapping");
+define("_MD_AM_SOAP_FIELDMAPPINGDESC","Describe here the mapping between the Xoops database field and the LDAP Authentication system field." .
+		"<br><br>Format [Xoops Database field]=[Auth system SOAP attribute]" .
+		"<br>for example : email=mail" .
+		"<br>Separate each with a |" .
+		"<br><br>!! For advanced users !!");
+
 
 // Xoops Authentication constants
 define("_MD_AM_AUTH_CONFOPTION_XOOPS", "XOOPS Database");
 define("_MD_AM_AUTH_CONFOPTION_LDAP", "Standard LDAP Directory");
 define("_MD_AM_AUTH_CONFOPTION_AD", "Microsoft Active Directory &copy");
+define("_MD_AM_AUTH_CONFOPTION_SOAP", "Xoops Soap Authentication");
 define("_MD_AM_AUTHENTICATION", "Authentication Options");
 define("_MD_AM_AUTHMETHOD", "Authentication Method");
 define("_MD_AM_AUTHMETHODDESC", "Which authentication method would you like to use for signing on users.");

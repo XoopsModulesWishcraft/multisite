@@ -30,7 +30,7 @@
 // ------------------------------------------------------------------------- //
 
 $modversion['name'] = _MI_MULTISITE_NAME;
-$modversion['version'] = 1.18;
+$modversion['version'] = 1.21;
 $modversion['description'] = _MI_MULTISITE_DESC;
 $modversion['author'] = "Wishcraft";
 $modversion['credits'] = "The XOOPS Project";
