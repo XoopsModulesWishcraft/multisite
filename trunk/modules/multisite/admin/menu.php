@@ -29,6 +29,7 @@
 // Project: The XOOPS Project                                                //
 // ------------------------------------------------------------------------- //
 global $adminmenu;
+$adminmenu = array();
 $adminmenu[1]['title'] = _MI_MULTISITE_ADMENU1;
 $adminmenu[1]['link'] = "admin.php?fct=blocksadmin";
 $adminmenu[2]['title'] = _MI_MULTISITE_ADMENU2;
@@ -41,4 +42,7 @@ $adminmenu[5]['title'] = _MI_MULTISITE_ADMENU5;
 $adminmenu[5]['link'] = "admin.php?fct=policiesadmin";
 $adminmenu[6]['title'] = _MI_MULTISITE_ADMENU6;
 $adminmenu[6]['link'] = "admin.php?fct=definesadmin";
+$adminmenu[7]['title'] = _MI_MULTISITE_ADMENU7;
+$adminmenu[7]['link'] = "admin.php?fct=domaingroupsadmin";
+
 ?>
