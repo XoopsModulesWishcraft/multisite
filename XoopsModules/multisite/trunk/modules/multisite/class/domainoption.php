@@ -174,7 +174,7 @@ class MultisiteDomainoptionHandler extends XoopsObjectHandler
             return false;
         }
         $sql = sprintf("DELETE FROM %s WHERE domop_id = %u", $this->db->prefix('domainoption'), $domoption->getVar('domop_id'));
-        if (!$result = $this->db->query($sql)) {
+        if (!$result = $this->db->queryF($sql)) {
             return false;
         }
         return true;

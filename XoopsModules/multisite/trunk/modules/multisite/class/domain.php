@@ -396,7 +396,7 @@ class MultisiteDomainHandler
 			if ($domain_handler->getDomainCount($criteria)>0) {
 				$domain_obj =$domain_handler->getDomain($criteria);
 				if ($withoptions == true) {
-         		   $domain_obj[0]->setConfOptions($this->getDomainOptions(new Criteria('conf_id', $domain_obj[0]->getVar('dom_id'))));
+         		   $domain_obj[0]->setConfOptions($this->getDomainOptions(new Criteria('dom_id', $domain_obj[0]->getVar('dom_id'))));
         		}
 				if ($oninsert==true)
 					$domain_obj[0]->setVar('dom_value', $config->getVar('conf_value'));
