@@ -29,7 +29,7 @@
 // Project: The XOOPS Project                                                //
 // ------------------------------------------------------------------------- //
 
-$modversion['name'] = _MI_MULTISITE_ADMENU4;
+$modversion['name'] = _MI_MULTISITE_ADMENU7;
 $modversion['version'] = "";
 $modversion['description'] = "Domains Administration";
 $modversion['author'] = "Simon Roberts (www.chronolabs.org.au)";
@@ -37,8 +37,8 @@ $modversion['credits'] = "Wishcraft";
 $modversion['help'] = "domainsadmin.html";
 $modversion['license'] = "GPL see LICENSE";
 $modversion['official'] = 0;
-$modversion['image'] = "domainsadmin.gif";
+$modversion['image'] = "domaingroupsadmin.gif";
 $modversion['hasAdmin'] = 1;
-$modversion['adminpath'] = "admin.php?fct=domainsadmin";
+$modversion['adminpath'] = "admin.php?fct=domaingroupsadmin";
 $modversion['category'] = XOOPS_MULTISITE_MODULE;
 ?>
