@@ -270,7 +270,7 @@ class MultisiteDomainitemHandler extends XoopsObjectHandler
             return false;
         }
         $sql = sprintf("DELETE FROM %s WHERE dom_id = %u", $this->db->prefix('domain'), $domain->getVar('dom_id'));
-        if (!$result = $this->db->query($sql)) {
+        if (!$result = $this->db->queryF($sql)) {
             return false;
         }
         return true;
