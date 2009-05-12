@@ -51,6 +51,11 @@ if ( !is_object($xoopsUser) || !is_object($xoopsModule) || !$xoopsUser->isAdmin(
     if (isset($_REQUEST['define_name'])) {
 		$define_name = $_REQUEST['define_name'];
     }
+
+    if (isset($_REQUEST['define_id'])) {
+        $define_id = intval($_REQUEST['define_id']);
+	}
+
 	if (isset($_REQUEST['domain'])) {
         $domain = (string)urldecode(($_REQUEST['domain']));
     } else {
@@ -140,7 +145,7 @@ if ( !is_object($xoopsUser) || !is_object($xoopsModule) || !$xoopsUser->isAdmin(
 
 				$eletray[$domain_out->getVar('dom_id')] = new XoopsFormElementTray(htmlspecialchars($define->getConfValueForOutput()), "&nbsp;");
 				$eletray[$domain_out->getVar('dom_id')]->addElement(new XoopsFormText('', 'define_var['.$domain_out->getVar('dom_id').']', 50, 255,htmlspecialchars($domain_out->getConfValueForOutput())));
-				$eletray[$domain_out->getVar('dom_id')]->addElement(new XoopsFormLabel('', "<a href='admin.php?fct=$fct&op=edit&domain_id=".$domain_out->getVar('dom_id')."&domain=".urlencode($domain)."'>"._EDIT."</a>&nbsp;<a href='admin.php?fct=$fct&op=delete&domain_id=".$domain_out->getVar('dom_id')."&domain=".urlencode($domain)."'>"._DELETE."</a>"));
+				$eletray[$domain_out->getVar('dom_id')]->addElement(new XoopsFormLabel('', "<a href='admin.php?fct=$fct&op=edit&define_id=".$domain_out->getVar('dom_id')."&domain=".urlencode($domain)."'>"._EDIT."</a>&nbsp;<a href='admin.php?fct=$fct&op=delete&define_id=".$domain_out->getVar('dom_id')."&domain=".urlencode($domain)."'>"._DELETE."</a>"));
 				$def_form->addElement($eletray[$domain_out->getVar('dom_id')]);	
 			}
 		}
@@ -176,22 +181,77 @@ if ( !is_object($xoopsUser) || !is_object($xoopsModule) || !$xoopsUser->isAdmin(
 		exit;
 	}
 
+	if ($op == 'delete')
+	{
+
+		$define = $domain_handler->getDomain($define_id);
+		$define_name = $domain_handler->getDomain($define->getVar('dom_pid'));
+		
+        if (!empty($use_mysession) && $xoopsConfig['use_mysession'] == 0 && $session_name != '') {
+            setcookie($session_name, session_id(), time()+(60*intval($session_expire)), '/', '', 0);
+        }
+
+		$delete_def_a = $domain_handler->deleteDomain($define);
+		$delete_def_b = $domain_handler->deleteDomain($define_name);
+	
+        // Clean cached files, may take long time
+        // User reigister_shutdown_function to keep running after connection closes so that cleaning cached files can be finished
+        // Cache management should be performed on a separate page
+        register_shutdown_function( array( &$xoopsTpl, 'clear_all_cache' ) );
+
+        if ($lang_updated) {
+            // Flush cache files for cpanel GUIs
+            xoops_load("cpanel", "system");
+            XoopsSystemCpanel::flush();
+        }
+
+		if ($delete_def_a && $delete_def_b)
+	        redirect_header("admin.php?fct=definesadmin&domain=".urlencode($domain), 2, _MD_AM_DBUPDATED);
+		else
+		    redirect_header("admin.php?fct=definesadmin&domain=".urlencode($domain), 2, _MD_AM_DBFAILED);
+		footer_adminMenu();
+		xoops_cp_footer();			
+		exit;
+	}
+
+	if ($op == 'edit')
+	{
+		$define = $domain_handler->getDomain($define_id);
+		$define_name = $domain_handler->getDomain($define->getVar('dom_pid'));
+
+		if ($_GET['op']==$op)
+			echo '<a href="'.XOOPS_URL.'/modules/multisite/admin.php?op=list&fct='.$fct.'&domain='.urlencode($domain).'">'. _MD_AM_DEFLIST .'</a>&nbsp;<span style="font-weight:bold;">&raquo;&raquo;</span>&nbsp;'.$module->name().'&nbsp;&raquo;&raquo;&nbsp;'.$obj_domain->getVar('dom_value').'<br /><br />';
+	    $nform = new XoopsThemeForm(_AM_SELECT_DEFINEEDIT, 'newform', 'admin.php?fct=definesadmin', 'post', true);
+    	$nform->setExtra('enctype="multipart/form-data"');
+		$eletray = new XoopsFormElementTray(_AM_SELECT_DEFINEEDIT, "&nbsp;");
+		$eletray->addElement(new XoopsFormText(_AM_SELECT_DEFINENAME, 'define_name['.$define_id.']', 50, 255,$define_name->getConfValueForOutput()));
+		$eletray->addElement(new XoopsFormText(_AM_SELECT_DEFINEVALUE, 'define_var['.$define_id.']', 50, 255,$define->getConfValueForOutput()));		
+		$nform->addElement(new XoopsFormHidden('domain', urlencode($domain)));
+		$nform->addElement(new XoopsFormHidden('fct', $fct));		
+		$nform->addElement($eletray);
+        $nform->addElement(new XoopsFormHidden('op', 'save'));	
+        $nform->addElement(new XoopsFormButton('', 'button', _GO, 'submit'));
+		$nform->display();
+		footer_adminMenu();
+		xoops_cp_footer();	
+		exit;
+	}
+
 
 
     if ($op == 'save') {
 		$domain_handler =& xoops_getmodulehandler('domain','multisite');
         if (!$GLOBALS['xoopsSecurity']->check()) {
-            redirect_header("admin.php?fct=preferences&domain=".urlencode($domain), 3, implode('<br />', $GLOBALS['xoopsSecurity']->getErrors()));
+            redirect_header("admin.php?fct=definesadmin&domain=".urlencode($domain), 3, implode('<br />', $GLOBALS['xoopsSecurity']->getErrors()));
         }
 
         if (!empty($use_mysession) && $xoopsConfig['use_mysession'] == 0 && $session_name != '') {
-            setcookie($session_name, session_id(), time()+(60*intval($session_expire)), '/',  '', 0);
+            setcookie($session_name, session_id(), time()+(60*intval($session_expire)), '/', '', 0);
         }
 
 		if (is_array($define_var))
 			foreach($define_var as $key => $value)
 			{
-				echo $key;
 				switch ($key) {
 				case "'new'":
 				case "new":			
@@ -227,6 +287,12 @@ if ( !is_object($xoopsUser) || !is_object($xoopsModule) || !$xoopsUser->isAdmin(
 					$define = $domain_handler->getDomain($key);
 					$define->setVar('dom_value', $value);
 					$domain_handler->insertDomain($define);
+					
+					if (isset($define_name[$key])&&!empty($define_name[$key])) {
+						$defineb = $domain_handler->getDomain($define->getVar('dom_pid'));
+						$defineb->setVar('dom_value', $define_name[$key]);
+						$domain_handler->insertDomain($defineb);
+					}
 					break;
 				}
 			
