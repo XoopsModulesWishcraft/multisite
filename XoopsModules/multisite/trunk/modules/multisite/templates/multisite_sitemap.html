@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.google.com/schemas/sitemap/0.84">
+  <{foreach item=item from=$items}>
+  <url>
+     <loc><{$item.loc}></loc> 
+     <lastmod><{$item.lastmod}></lastmod> 
+     <changefreq><{$item.changefreq}></changefreq> 
+     <priority><{$item.priority}></priority> 
+  </url>
+  <{/foreach}>
+</urlset>
