@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+ <title><{$channel_title}></title>
+ <link href="<{$channel_link}>"/>
+ <updated><{$channel_lastbuild}></updated>
+ <author>
+   <name><{$channel_editor}></name>
+ </author>
+
+ <{foreach item=item from=$items}>
+ <entry>
+   <title><{$item.title}></title>
+   <link href="<{$item.link}>"/>
+   <updated><{$item.pubdate}></updated>
+   <summary><{$item.description}></summary>
+ </entry>
+<{/foreach}>
+</feed>
