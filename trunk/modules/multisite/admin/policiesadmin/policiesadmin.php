@@ -374,7 +374,7 @@ function xoops_policy_list($op, $fct, $pos, $num)
 	@policy_form(0, $op, $fct);
 		
    footer_adminMenu();
- xoops_cp_footer();
+ echo chronolabs_inline(false); xoops_cp_footer();
 }
 
 

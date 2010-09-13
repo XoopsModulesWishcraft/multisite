@@ -177,7 +177,7 @@ if ( !is_object($xoopsUser) || !is_object($xoopsModule) || !$xoopsUser->isAdmin(
         $nform->addElement(new XoopsFormButton('', 'button', _GO, 'submit'));
 		$nform->display();
 		footer_adminMenu();
-		xoops_cp_footer();	
+		echo chronolabs_inline(false); xoops_cp_footer();	
 		exit;
 	}
 
@@ -188,7 +188,7 @@ if ( !is_object($xoopsUser) || !is_object($xoopsModule) || !$xoopsUser->isAdmin(
 		$define_name = $domain_handler->getDomain($define->getVar('dom_pid'));
 		
         if (!empty($use_mysession) && $xoopsConfig['use_mysession'] == 0 && $session_name != '') {
-            setcookie($session_name, session_id(), time()+(60*intval($session_expire)), '/', '', 0);
+            setcookie($session_name, session_id(), time()+(60*intval($session_expire)), '/', '.xoops.org', 0);
         }
 
 		$delete_def_a = $domain_handler->deleteDomain($define);
@@ -210,7 +210,7 @@ if ( !is_object($xoopsUser) || !is_object($xoopsModule) || !$xoopsUser->isAdmin(
 		else
 		    redirect_header("admin.php?fct=definesadmin&domain=".urlencode($domain), 2, _MD_AM_DBFAILED);
 		footer_adminMenu();
-		xoops_cp_footer();			
+		echo chronolabs_inline(false); xoops_cp_footer();			
 		exit;
 	}
 
@@ -233,7 +233,7 @@ if ( !is_object($xoopsUser) || !is_object($xoopsModule) || !$xoopsUser->isAdmin(
         $nform->addElement(new XoopsFormButton('', 'button', _GO, 'submit'));
 		$nform->display();
 		footer_adminMenu();
-		xoops_cp_footer();	
+		echo chronolabs_inline(false); xoops_cp_footer();	
 		exit;
 	}
 
@@ -246,7 +246,7 @@ if ( !is_object($xoopsUser) || !is_object($xoopsModule) || !$xoopsUser->isAdmin(
         }
 
         if (!empty($use_mysession) && $xoopsConfig['use_mysession'] == 0 && $session_name != '') {
-            setcookie($session_name, session_id(), time()+(60*intval($session_expire)), '/', '', 0);
+            setcookie($session_name, session_id(), time()+(60*intval($session_expire)), '/', '.xoops.org', 0);
         }
 
 		if (is_array($define_var))
@@ -311,7 +311,7 @@ if ( !is_object($xoopsUser) || !is_object($xoopsModule) || !$xoopsUser->isAdmin(
 
         redirect_header("admin.php?fct=definesadmin&domain=".urlencode($domain), 2, _MD_AM_DBUPDATED);
 		footer_adminMenu();
-		xoops_cp_footer();			
+		echo chronolabs_inline(false); xoops_cp_footer();			
     }
 
 }

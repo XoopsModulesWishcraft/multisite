@@ -150,7 +150,7 @@ if (false != $error) {
     }
     echo '</tr></table>';
    footer_adminMenu();
- xoops_cp_footer();
+   xoops_cp_footer();
 }
 
 ?>

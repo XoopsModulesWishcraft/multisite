@@ -249,6 +249,7 @@ class MultisiteDomainHandler
             if (!empty($category)) {
                 $criteria->add(new Criteria('dom_catid', intval($category)));
             }
+			$criteria->add(new Criteria('dom_pid', intval($this->_domain_id)));
             $domains = $this->getDomains($criteria, true);
             if (is_array($domains)) {
                 foreach (array_keys($domains) as $i) {

@@ -121,6 +121,30 @@ class MultisiteDomaincategoryHandler extends XoopsObjectHandler
         }
         return $domcat;
     }
+	
+	
+    /**
+     * Retrieve a {@link MultisiteDomaincategory}
+     *
+     * @param	int $id ID
+     *
+     * @return	object  {@link MultisiteDomaincategory}, FALSE on fail
+     */
+    function &getByName($name) {
+        $domcat = false;
+        if (!empty($name)) {
+            $sql = 'SELECT * FROM '.$this->db->prefix('domaincategory').' WHERE domcat_name=\''.$name.'\'';
+            if (!$result = $this->db->query($sql)) {
+                return $domcat;
+            }
+            $numrows = $this->db->getRowsNum($result);
+            if ($numrows == 1) {
+                $domcat = new MultisiteDomaincategory();
+                $domcat->assignVars($this->db->fetchArray($result), false);
+            }
+        }
+        return $domcat;
+    }
 
     /**
      * Store a {@link MultisiteDomaincategory}

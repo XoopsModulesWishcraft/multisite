@@ -74,7 +74,7 @@ if ( $op == "edit")
 	adminMenu(XOOPS_MULTISITE_POLICIES);
 	@policy_form($_GET['id'], $op, $_GET['fct']);
 	footer_adminMenu();
-	xoops_cp_footer();
+	echo chronolabs_inline(false); xoops_cp_footer();
 	exit;
 }
 

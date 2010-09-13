@@ -177,6 +177,8 @@ function add_domaingroup_form($op, $fct)
 	$op = "adddomain";
 	
 	include(XOOPS_ROOT_PATH.'/class/xoopsformloader.php');
+	include_once(XOOPS_ROOT_PATH.'/modules/multisite/class/formcheckboxdomains.php');
+	include_once(XOOPS_ROOT_PATH.'/modules/multisite/class/formselectdomains.php');
 	
 	$form = new XoopsThemeForm(_MD_AM_NEWDOMAINGROUP, array("op","fct"), xoops_getenv('PHP_SELF')."?fct=$fct&op=$op");
 	$form->setExtra('enctype="multipart/form-data"');
@@ -252,7 +254,7 @@ function edit_domaingroup_form($id, $op, $fct)
 
 	echo $form->render();
 	
-	xoops_cp_footer();
+	echo chronolabs_inline(false); xoops_cp_footer();
 }
 
 
@@ -321,7 +323,7 @@ function xoops_domaingroup_list($op, $fct)
 		echo $form->render();
 		
    footer_adminMenu();
-   xoops_cp_footer();
+   echo chronolabs_inline(false); xoops_cp_footer();
 }
 
 

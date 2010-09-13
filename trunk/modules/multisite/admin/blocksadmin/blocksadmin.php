@@ -309,7 +309,7 @@ function save_block($bside, $bweight, $bvisible, $btitle, $bcontent, $bctype, $b
 	adminMenu(XOOPS_MULTISITE_BLOCK);
         xoops_error(sprintf(_AM_NOTSELNG, _AM_VISIBLEIN));
        footer_adminMenu();
- xoops_cp_footer();
+ echo chronolabs_inline(false); xoops_cp_footer();
         exit();
     }
     $myblock = new MultisiteBlock();
@@ -358,7 +358,7 @@ function save_block($bside, $bweight, $bvisible, $btitle, $bcontent, $bctype, $b
 	adminMenu(XOOPS_MULTISITE_BLOCK);
         $myblock->getHtmlErrors();
        footer_adminMenu();
- xoops_cp_footer();
+ echo chronolabs_inline(false); xoops_cp_footer();
         exit();
     }
     $db =& Database::getInstance();
@@ -401,7 +401,7 @@ function update_block($bid, $bside, $bweight, $bvisible, $btitle, $bcontent, $bc
 	adminMenu(XOOPS_MULTISITE_BLOCK);
         xoops_error(sprintf(_AM_NOTSELNG, _AM_VISIBLEIN));
        footer_adminMenu();
- xoops_cp_footer();
+ echo chronolabs_inline(false); xoops_cp_footer();
         exit();
     }
     $myblock = new MultisiteBlock($bid);
@@ -581,7 +581,7 @@ function clone_block($bid)
     include XOOPS_ROOT_PATH.'/modules/multisite/admin/blocksadmin/blockform.php';
     $form->display();
    footer_adminMenu();
- xoops_cp_footer();
+ echo chronolabs_inline(false); xoops_cp_footer();
     exit();
 }
 
@@ -594,7 +594,7 @@ function clone_block_ok($bid, $bside, $bweight, $bvisible, $btitle, $bcontent, $
 	adminMenu(0);
         xoops_error(sprintf(_AM_NOTSELNG, _AM_VISIBLEIN));
        footer_adminMenu();
- xoops_cp_footer();
+ echo chronolabs_inline(false); xoops_cp_footer();
         exit();
     }
     */
@@ -631,7 +631,7 @@ function clone_block_ok($bid, $bside, $bweight, $bvisible, $btitle, $bcontent, $
 		adminMenu(XOOPS_MULTISITE_BLOCK);
 		$clone->getHtmlErrors();
 		footer_adminMenu();
-		xoops_cp_footer();
+		echo chronolabs_inline(false); xoops_cp_footer();
 		exit();
     }
     if ($clone->getVar('template') != '') {

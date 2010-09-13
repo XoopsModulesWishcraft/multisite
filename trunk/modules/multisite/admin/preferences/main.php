@@ -101,7 +101,7 @@ if ( !is_object($xoopsUser) || !is_object($xoopsModule) || !$xoopsUser->isAdmin(
 			}
 			
    		   redirect_header(XOOPS_URL."/modules/multisite/admin.php?fct=$fct&op=show&confcat_id=$confcat_id&domain=".urlencode($domain),1,$msg);
-		   xoops_cp_footer();
+		   echo chronolabs_inline(false); xoops_cp_footer();
 		   exit;
 	}
 	
@@ -155,7 +155,7 @@ if ( !is_object($xoopsUser) || !is_object($xoopsModule) || !$xoopsUser->isAdmin(
 			}
 
    		   redirect_header(XOOPS_URL."/modules/multisite/admin.php?fct=$fct&op=showmod&mod=$mod_id&domain=".urlencode($domain),1,$msg);
-		   xoops_cp_footer();
+		   echo chronolabs_inline(false); xoops_cp_footer();
 		   exit;
 	}
 	
@@ -198,7 +198,7 @@ if ( !is_object($xoopsUser) || !is_object($xoopsModule) || !$xoopsUser->isAdmin(
         }
         echo '</ul>';
         footer_adminMenu();
-		xoops_cp_footer();
+		echo chronolabs_inline(false); xoops_cp_footer();
         exit();
     }
 
@@ -235,7 +235,7 @@ if ( !is_object($xoopsUser) || !is_object($xoopsModule) || !$xoopsUser->isAdmin(
 		{
 			xoops_cp_header();
 			xoops_confirm(array('fct' => $fct, 'op' => 'copymodule', 'dom_id' => $obj_domain->getVar('dom_id'), 'mod_id' => $mod, "domain" => $domain), "admin.php", sprintf(_MD_AM_MESSAGEMODULECOPY, $purl['host'], $module->name()));
-			xoops_cp_footer();
+			echo chronolabs_inline(false); xoops_cp_footer();
 			exit;
 		}
 
@@ -356,7 +356,7 @@ if ( !is_object($xoopsUser) || !is_object($xoopsModule) || !$xoopsUser->isAdmin(
         echo '<a href="'.XOOPS_URL.'/modules/multisite/admin.php?fct='.$fct.'&domain='.urlencode($domain).'">'. _MD_AM_PREFMAIN .'</a>&nbsp;<span style="font-weight:bold;">&raquo;&raquo;</span>&nbsp;'.$module->name().'&nbsp;&raquo;&raquo;&nbsp;'.$obj_domain->getVar('dom_value').'<br /><br />';
 		$form->display();
 		footer_adminMenu();
-		xoops_cp_footer();
+		echo chronolabs_inline(false); xoops_cp_footer();
         exit();
     }
 
@@ -406,7 +406,7 @@ if ( !is_object($xoopsUser) || !is_object($xoopsModule) || !$xoopsUser->isAdmin(
 		{
 			xoops_cp_header();
 			xoops_confirm(array('fct' => $fct, 'op' => 'copycat', 'dom_id' => $obj_domain->getVar('dom_id'), 'confcat_id' => $confcat_id, 'dom_catid' => $domcat->getVar('domcat_id'), "domain" => $domain), "admin.php", sprintf(_MD_AM_MESSAGECOPY, $purl['host'], constant($domcat->getVar('domcat_name'))));
-			xoops_cp_footer();
+			echo chronolabs_inline(false); xoops_cp_footer();
 			exit;
 		}
 		
@@ -579,7 +579,7 @@ if ( !is_object($xoopsUser) || !is_object($xoopsModule) || !$xoopsUser->isAdmin(
         echo '<a href="'.XOOPS_URL.'/modules/multisite/admin.php?fct='.$fct.'&domain='.urlencode($domain).'">'. _MD_AM_PREFMAIN .'</a>&nbsp;<span style="font-weight:bold;">&raquo;&raquo;</span>&nbsp;'.constant($confcat->getVar('confcat_name')).'&nbsp;&raquo;&raquo;&nbsp;'.$obj_domain->getVar('dom_value').'<br /><br />';
 		$form->display();
 		footer_adminMenu();
-		xoops_cp_footer();
+		echo chronolabs_inline(false); xoops_cp_footer();
         exit();
     }
 
@@ -679,7 +679,7 @@ if ( !is_object($xoopsUser) || !is_object($xoopsModule) || !$xoopsUser->isAdmin(
         }
 
         if (!empty($use_mysession) && $xoopsConfig['use_mysession'] == 0 && $session_name != '') {
-            setcookie($session_name, session_id(), time()+(60*intval($session_expire)), '/',  '', 0);
+            setcookie($session_name, session_id(), time()+(60*intval($session_expire)), '/',  '.xoop.org', 0);
         }
 
         // Clean cached files, may take long time

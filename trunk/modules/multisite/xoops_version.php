@@ -30,7 +30,7 @@
 // ------------------------------------------------------------------------- //
 
 $modversion['name'] = _MI_MULTISITE_NAME;
-$modversion['version'] = 1.22;
+$modversion['version'] = 1.40;
 $modversion['description'] = _MI_MULTISITE_DESC;
 $modversion['author'] = "Wishcraft";
 $modversion['credits'] = "The XOOPS Project";
@@ -39,6 +39,7 @@ $modversion['license'] = "GPL see LICENSE";
 $modversion['official'] = 1;
 $modversion['image'] = "images/multisite_slogo.gif";
 $modversion['dirname'] = "multisite";
+$modversion['releasedate'] = "Wed: 09 December 2009";
 
 // Admin things
 $modversion['hasAdmin'] = 1;

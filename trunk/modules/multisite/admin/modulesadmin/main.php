@@ -72,7 +72,7 @@ if ( $op == "confirm" ) {
     if ( count($error) > 0 ) {
         xoops_error($error);
         echo "<p><a href='admin.php?fct=modulesadmin'>"._MD_AM_BTOMADMIN."</a></p>";
-        xoops_cp_footer(); footer_adminMenu();
+        footer_adminMenu(); echo chronolabs_inline(false); xoops_cp_footer(); 
         exit();
     }
     echo "<h4>"._MD_AM_PCMFM."</h4>
@@ -145,7 +145,7 @@ if ( $op == "confirm" ) {
     <tr class='foot' align='center'><td colspan='4'><input type='submit' value='"._MD_AM_SUBMIT."' />&nbsp;<input type='button' value='"._MD_AM_CANCEL."' onclick='location=\"admin.php?fct=modulesadmin\"' />".$GLOBALS['xoopsSecurity']->getTokenHTML()."</td></tr>
     </table>
     </form>";
-    xoops_cp_footer(); footer_adminMenu();
+    footer_adminMenu(); echo chronolabs_inline(false); xoops_cp_footer(); 
     exit();
 }
 if ( $op == "submit" ) {
@@ -182,7 +182,7 @@ if ( $op == "submit" ) {
         }
     }
     echo "<br /><a href='admin.php?fct=modulesadmin'>"._MD_AM_BTOMADMIN."</a>";
-    xoops_cp_footer(); footer_adminMenu();
+    footer_adminMenu(); echo chronolabs_inline(false); xoops_cp_footer(); 
     exit();
 }
 
@@ -196,7 +196,7 @@ if ($op == 'install') {
     $msgs .= '<br /><span style="font-size:smaller;">'.$mod->getVar('name').'</span><br /><br />'._MD_AM_RUSUREINS;
     xoops_cp_header();  adminMenu(XOOPS_MULTISITE_MODULE);
     xoops_confirm(array('module' => $module, 'op' => 'install_ok', 'fct' => 'modulesadmin'), 'admin.php', $msgs, _MD_AM_INSTALL);
-    xoops_cp_footer(); footer_adminMenu();
+    footer_adminMenu(); echo chronolabs_inline(false); xoops_cp_footer(); 
     exit();
 }
 
@@ -215,7 +215,7 @@ if ($op == 'install_ok') {
         }
     }
     echo "<br /><a href='admin.php?fct=modulesadmin'>"._MD_AM_BTOMADMIN."</a>";
-    xoops_cp_footer(); footer_adminMenu();
+    footer_adminMenu(); echo chronolabs_inline(false); xoops_cp_footer(); 
     exit();
 }
 
@@ -228,7 +228,7 @@ if ($op == 'uninstall') {
     $msgs .= '<br /><span style="font-size:smaller;">'.$mod->getVar('name').'</span><br /><br />'._MD_AM_RUSUREUNINS;
     xoops_cp_header();  adminMenu(XOOPS_MULTISITE_MODULE);
     xoops_confirm(array('module' => $module, 'op' => 'uninstall_ok', 'fct' => 'modulesadmin'), 'admin.php', $msgs, _YES);
-    xoops_cp_footer(); footer_adminMenu();
+    footer_adminMenu(); echo chronolabs_inline(false); xoops_cp_footer(); 
     exit();
 }
 
@@ -247,7 +247,7 @@ if ($op == 'uninstall_ok') {
         }
     }
     echo "<a href='admin.php?fct=modulesadmin'>"._MD_AM_BTOMADMIN."</a>";
-    xoops_cp_footer(); footer_adminMenu();
+    footer_adminMenu(); echo chronolabs_inline(false); xoops_cp_footer(); 
     exit();
 }
 
@@ -260,7 +260,7 @@ if ($op == 'update') {
     $msgs .= '<br /><span style="font-size:smaller;">'.$mod->getVar('name').'</span><br /><br />'._MD_AM_RUSUREUPD;
     xoops_cp_header();  adminMenu(XOOPS_MULTISITE_MODULE);
     xoops_confirm(array('dirname' => $module, 'op' => 'update_ok', 'fct' => 'modulesadmin'), 'admin.php', $msgs, _MD_AM_UPDATE);
-    xoops_cp_footer(); footer_adminMenu();
+    footer_adminMenu(); echo chronolabs_inline(false); xoops_cp_footer(); 
     exit();
 }
 
@@ -639,7 +639,7 @@ if ($op == 'update_ok') {
         echo "<p>".sprintf(_MD_AM_OKUPD, "<strong>".$module->getVar('name')."</strong>")."</p>";
     }
     echo "<br /><a href='admin.php?fct=modulesadmin'>"._MD_AM_BTOMADMIN."</a>";
-    xoops_cp_footer(); footer_adminMenu();
+    footer_adminMenu(); echo chronolabs_inline(false); xoops_cp_footer(); 
     // Flush cache files for cpanel GUIs
     xoops_load("cpanel", "system");
     XoopsSystemCpanel::flush();

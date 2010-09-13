@@ -96,7 +96,7 @@ if (isset($previewblock)) {
     include XOOPS_ROOT_PATH.'/modules/multisite/admin/blocksadmin/blockform.php';
     $form->display();
    footer_adminMenu();
- xoops_cp_footer();
+ echo chronolabs_inline(false); xoops_cp_footer();
     echo '<script type="text/javascript">
     <!--//
     win = openWithSelfMain("", "popup", 250, 200, true);
@@ -119,7 +119,7 @@ if ( $op == "list" ) {
 	adminMenu(XOOPS_MULTISITE_BLOCK);
     list_blocks();
    footer_adminMenu();
- xoops_cp_footer();
+ echo chronolabs_inline(false); xoops_cp_footer();
     exit();
 }
 
@@ -196,7 +196,7 @@ if ( $op == "delete" ) {
 	adminMenu(XOOPS_MULTISITE_BLOCK);
 	delete_block($bid);
 	footer_adminMenu();
-	xoops_cp_footer();
+	echo chronolabs_inline(false); xoops_cp_footer();
     exit();
 }
 
@@ -205,7 +205,7 @@ if ( $op == "edit" ) {
 	adminMenu(XOOPS_MULTISITE_BLOCK);
 	edit_block($bid);
 	footer_adminMenu();
-	xoops_cp_footer();
+	echo chronolabs_inline(false); xoops_cp_footer();
     exit();
 }
 

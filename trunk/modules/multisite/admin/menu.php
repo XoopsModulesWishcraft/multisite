@@ -44,5 +44,4 @@ $adminmenu[6]['title'] = _MI_MULTISITE_ADMENU6;
 $adminmenu[6]['link'] = "admin.php?fct=definesadmin";
 $adminmenu[7]['title'] = _MI_MULTISITE_ADMENU7;
 $adminmenu[7]['link'] = "admin.php?fct=domaingroupsadmin";
-
 ?>

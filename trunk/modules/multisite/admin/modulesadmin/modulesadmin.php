@@ -152,7 +152,7 @@ function xoops_module_list()
         }
     }
     echo "</table>";
-    xoops_cp_footer(); footer_adminMenu();
+    footer_adminMenu(); echo chronolabs_inline(false); xoops_cp_footer(); 
 }
 
 function xoops_module_install($dirname)

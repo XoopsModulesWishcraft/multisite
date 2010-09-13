@@ -222,7 +222,7 @@ function edit_domain_form($id, $op, $fct)
 
 	echo $form->render();
 	
-	xoops_cp_footer();
+	echo chronolabs_inline(false); xoops_cp_footer();
 }
 
 
@@ -334,7 +334,7 @@ function xoops_domain_list($op, $fct)
 		echo $form->render();
 		
    footer_adminMenu();
- xoops_cp_footer();
+ echo chronolabs_inline(false); xoops_cp_footer();
 }
 
 
