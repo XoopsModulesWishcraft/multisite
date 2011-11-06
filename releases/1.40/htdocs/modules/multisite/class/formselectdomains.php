@@ -16,7 +16,7 @@
  * @since           2.0.0
  * @author          Kazumi Ono <onokazu@xoops.org>
  * @author          Taiwen Jiang <phppp@users.sourceforge.net>
- * @version         $Id: formselect.php 2084 2008-09-14 15:35:57Z phppp $
+ * @version         $Id$
  */
  
 if (!defined('XOOPS_ROOT_PATH')) {

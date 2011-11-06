@@ -19,7 +19,7 @@
  * @author      Kazumi Ono (AKA onokazu) http://www.myweb.ne.jp/, http://www.xoops.org/, http://jp.xoops.org/
  * @author      Skalpa Keo <skalpa@xoops.org>
  * @author      Taiwen Jiang <phppp@users.sourceforge.net>
- * @version     $Id: block.php 2772 2009-02-08 11:13:47Z phppp $
+ * @version     $Id$
  * @package     class
  */
 

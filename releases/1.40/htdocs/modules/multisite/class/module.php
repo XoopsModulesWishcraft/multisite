@@ -1,5 +1,5 @@
 <?php
-// $Id: module.php 2000 2008-08-30 11:03:05Z phppp $
+// $Id$
 //  ------------------------------------------------------------------------ //
 //                XOOPS - PHP Content Management System                      //
 //                    Copyright (c) 2000 XOOPS.org                           //

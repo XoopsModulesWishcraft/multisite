@@ -1,5 +1,5 @@
 <?php
-// $Id: preferences.php 2879 2009-02-27 00:53:34Z wishcraft $
+// $Id$
 // _LANGCODE: en
 // _CHARSET : UTF-8
 // Translator: XOOPS Translation Team

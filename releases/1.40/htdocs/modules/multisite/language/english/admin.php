@@ -1,5 +1,5 @@
 <?php
-// $Id: admin.php 2958 2009-03-13 08:42:30Z wishcraft $
+// $Id$
 // _LANGCODE: en
 // _CHARSET : UTF-8
 // Translator: XOOPS Translation Team

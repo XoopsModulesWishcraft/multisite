@@ -44,7 +44,7 @@
 
  * @author          John Neill <catzwolf@xoops.org>
 
- * @version         $Id: formcheckbox.php 3174 2009-04-18 15:00:48Z catzwolf $
+ * @version         $Id$
 
  */
 

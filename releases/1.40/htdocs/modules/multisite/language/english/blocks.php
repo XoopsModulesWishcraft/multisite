@@ -1,5 +1,5 @@
 <?php
-// $Id: blocks.php 2411 2008-11-14 21:01:07Z julionc $
+// $Id$
 // _LANGCODE: en
 // _CHARSET : UTF-8
 // Translator: XOOPS Translation Team

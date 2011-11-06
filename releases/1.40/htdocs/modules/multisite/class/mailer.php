@@ -1,5 +1,5 @@
 <?php
-// $Id: MultisiteMailer.php 2522 2008-11-27 12:59:28Z phppp $
+// $Id$
 //  ------------------------------------------------------------------------ //
 //                XOOPS - PHP Content Management System                      //
 //                    Copyright (c) 2000 XOOPS.org                           //
