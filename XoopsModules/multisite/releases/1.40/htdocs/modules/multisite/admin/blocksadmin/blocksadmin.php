@@ -20,7 +20,7 @@
  * @author      Skalpa Keo <skalpa@xoops.org>
  * @author      Taiwen Jiang <phppp@users.sourceforge.net>
  * @author      Steven Li <phppp@users.sourceforge.net>
- * @version     $Id: blocksadmin.php 2879 2009-02-27 00:53:34Z wishcraft $
+ * @version     $Id$
  * @package     class
  * @todo        zone evolution
  */

@@ -1,5 +1,5 @@
 <?php
-// $Id: blockform.php 1993 2008-08-30 10:49:06Z phppp $
+// $Id$
 //  ------------------------------------------------------------------------ //
 //                XOOPS - PHP Content Management System                      //
 //                    Copyright (c) 2000 XOOPS.org                           //

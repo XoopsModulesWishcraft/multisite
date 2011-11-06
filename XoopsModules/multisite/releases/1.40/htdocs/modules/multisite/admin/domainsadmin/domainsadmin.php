@@ -1,5 +1,5 @@
 <?php
-// $Id: modulesadmin.php 2701 2009-01-20 23:45:46Z dugris $
+// $Id$
 //  ------------------------------------------------------------------------ //
 //                XOOPS - PHP Content Management System                      //
 //                    Copyright (c) 2000 XOOPS.org                           //

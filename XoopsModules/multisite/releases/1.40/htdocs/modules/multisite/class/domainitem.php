@@ -1,5 +1,5 @@
 <?php
-// $Id: Domainitem.php 1947 2008-08-08 10:16:50Z phppp $
+// $Id$
 //  ------------------------------------------------------------------------ //
 //                XOOPS - PHP Content Management System                      //
 //                    Copyright (c) 2000 XOOPS.org                           //

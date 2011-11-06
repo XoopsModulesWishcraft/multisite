@@ -1,5 +1,5 @@
 <?php
-// $Id: cpanel.php 2412 2008-11-14 21:12:13Z julionc $
+// $Id$
 // _LANGCODE: en
 // _CHARSET : UTF-8
 // Translator: XOOPS Translation Team

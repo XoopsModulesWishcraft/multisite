@@ -1,5 +1,5 @@
 <?php
-// $Id: modulesadmin.php 2879 2009-02-27 00:53:34Z wishcraft $
+// $Id$
 //  ------------------------------------------------------------------------ //
 //                XOOPS - PHP Content Management System                      //
 //                    Copyright (c) 2000 XOOPS.org                           //

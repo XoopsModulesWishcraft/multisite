@@ -1,5 +1,5 @@
 <?php
-// $Id: main.php 2711 2009-01-22 10:01:21Z phppp $
+// $Id$
 //  ------------------------------------------------------------------------ //
 //                XOOPS - PHP Content Management System                      //
 //                    Copyright (c) 2000 XOOPS.org                           //

@@ -1,5 +1,5 @@
 <?php
-// $Id: MultisiteMultimailer.php 1501 2008-04-26 11:47:55Z phppp $
+// $Id$
 //  ------------------------------------------------------------------------ //
 //                XOOPS - PHP Content Management System                      //
 //                    Copyright (c) 2000 XOOPS.org                           //
@@ -40,7 +40,7 @@ if (!defined("XOOPS_ROOT_PATH")) {
  * @author		Jochen Büînagel	<jb@buennagel.com>
  * @copyright	copyright (c) 2000-2003 The XOOPS Project (http://www.xoops.org)
  *
- * @version		$Id: MultisiteMultimailer.php 1501 2008-04-26 11:47:55Z phppp $
+ * @version		$Id$
  */
 
 /**

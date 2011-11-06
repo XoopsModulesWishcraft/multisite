@@ -1,5 +1,5 @@
 <?php
-// $Id: groupperm.php 1529 2008-05-01 08:14:55Z phppp $
+// $Id$
 
 include '../../../include/cp_header.php';
 $modid = isset($_POST['modid']) ? intval($_POST['modid']) : 0;

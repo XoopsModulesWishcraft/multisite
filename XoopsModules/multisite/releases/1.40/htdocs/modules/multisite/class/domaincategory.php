@@ -1,5 +1,5 @@
 <?php
-// $Id: domaincategory.php 1217 2008-01-01 17:04:41Z phppp $
+// $Id$
 //  ------------------------------------------------------------------------ //
 //                XOOPS - PHP Content Management System                      //
 //                    Copyright (c) 2000 XOOPS.org                           //
