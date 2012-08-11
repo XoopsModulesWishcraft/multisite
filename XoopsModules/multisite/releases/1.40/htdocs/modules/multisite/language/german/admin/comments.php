@@ -5,12 +5,12 @@
  // Translator: XOOPS Translation Team 
 
  //%%%%%% Manager %%%%% 
- define( "_MD_AM_COMMMAN", "Kommentar-Manager "); 
+ define("_MD_AM_COMMMAN", "Kommentar-Manager "); 
 
- define( "_MD_AM_LISTCOMM", "List Comments"); 
- define( "_MD_AM_ALLMODS", "Alle Module"); 
- define( "_MD_AM_ALLSTATUS", "Jeder Status"); 
- define( "_MD_AM_MODULE", "Module"); 
- define( "_MD_AM_COMFOUND", " %s  Kommentar (e) gefunden. "); 
+ define("_MD_AM_LISTCOMM", "List Comments"); 
+ define("_MD_AM_ALLMODS", "Alle Module"); 
+ define("_MD_AM_ALLSTATUS", "Jeder Status"); 
+ define("_MD_AM_MODULE", "Module"); 
+ define("_MD_AM_COMFOUND", " %s  Kommentar (e) gefunden. "); 
 
  ?> 

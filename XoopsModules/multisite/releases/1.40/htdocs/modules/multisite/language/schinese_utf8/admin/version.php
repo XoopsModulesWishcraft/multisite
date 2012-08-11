@@ -5,6 +5,6 @@
 
  // %%%%%%管理模块名称版本%%%%% 
  
-define("_AM_DBUPDATED", "_MD_AM_DBUPDATED" );
+define("_AM_DBUPDATED", "_MD_AM_DBUPDATED");
 ?> 
 

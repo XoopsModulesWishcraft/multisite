@@ -45,6 +45,6 @@ define("_MB_MULTISITE_SECURE", "Secure Login");
 define("_MB_MULTISITE_NUMTHEME", "%s themes");
 define("_MB_MULTISITE_THSHOW", "Display screenshot image");
 define("_MB_MULTISITE_THWIDTH", "Screenshot image width");
-define('_MB_MULTISITE_REMEMBERME', 'Remember me');
+define('_MB_MULTISITE_REMEMBERME','Remember me');
 
 ?>

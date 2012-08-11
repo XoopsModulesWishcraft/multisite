@@ -7,10 +7,10 @@
  //不改变
 define("_MD_AM_MODULEPREF_DOMAIN","模块使用偏好选择");
 define("_MD_AM_MODULEPREF","模块使用偏好");
-define("_MD_AM_MESSAGEMODULECOPY","该域名的<strong>的%s/强有力的'没有任何数据的<strong>的%s/强有力的'<br/>你要复制当前配置" );
+define("_MD_AM_MESSAGEMODULECOPY","该域名的<strong>的%s/强有力的'没有任何数据的<strong>的%s/强有力的'<br/>你要复制当前配置");
 define("_MD_AM_SUCCESSCOPY","成功复制的设定命名为：");
 define("_MD_AM_ERRORCOPY","错误复制设置命名为：");
-define("_AM_DBUPDATED", "_MD_AM_DBUPDATED" );
+define("_AM_DBUPDATED", "_MD_AM_DBUPDATED");
 define("_MD_AM_SITEPREF_DOMAIN", "域偏好选择");
 define("_AM_SELECT_DOMAIN", "选择域设置首选项");
 define("_AM_DOMAINS", "域名： ");
@@ -27,10 +27,10 @@ define("_MD_AM_DTHEME","预设的主题是：");
 define("_MD_AM_THEMESET","主题设置");
 define("_MD_AM_ANONNAME","用户名称为匿名用户");
 define("_MD_AM_MINPASS","最小密码长度要求");
-define("_MD_AM_NEWUNOTIFY","通过邮件通知时,新用户注册" );
-define("_MD_AM_SELFDELETE","允许用户删除自己的帐户吗" );
-define("_MD_AM_LOADINGIMG","显示载入中...形象" );
-define("_MD_AM_USEGZIP","使用gzip压缩" );
+define("_MD_AM_NEWUNOTIFY","通过邮件通知时,新用户注册");
+define("_MD_AM_SELFDELETE","允许用户删除自己的帐户吗");
+define("_MD_AM_LOADINGIMG","显示载入中...形象");
+define("_MD_AM_USEGZIP","使用gzip压缩");
 define("_MD_AM_UNAMELVL","选择的严格筛选的用户名");
 define("_MD_AM_STRICT","严格（只有字母和数字）");
 define("_MD_AM_MEDIUM","中等");
@@ -47,7 +47,7 @@ define("_MD_AM_SESSNAMEDSC","会议的名称（有效期只有当'使用自定�
 define("_MD_AM_SESSEXPIRE","会话过期");
 define("_MD_AM_SESSEXPIREDSC","最长期限会议空闲时间在几分钟内（有效期只有当'使用自定义会议'已启用。只当您使用PHP4.2.0或更高.)");
  
-define("_MD_AM_BANNERS","激活横幅广告" );
+define("_MD_AM_BANNERS","激活横幅广告");
 define("_MD_AM_MYIP","您的IP地址");
 define("_MD_AM_MYIPDSC","此IP将不能算作一种印象的旗帜");
 define("_MD_AM_ALWDHTML","允许的HTML标记的所有职位。");
@@ -71,14 +71,14 @@ define("_MD_AM_REMEMBER","请记住,搭配chmod 666此文件,以便让系统写�
 define("_MD_AM_IFUCANT","如果你不能改变的权限您可以编辑此文件其余部分的手。");
  
 
-define("_MD_AM_MESSAGECOPY","网域的<strong>的%s</strong>/强有力的'不偏好%s的propogated的掩蔽,你想不想这样做呢" );
+define("_MD_AM_MESSAGECOPY","网域的<strong>的%s</strong>/强有力的'不偏好%s的propogated的掩蔽,你想不想这样做呢");
 define("_MD_AM_COMMODE","默认评论显示模式");
 define("_MD_AM_COMORDER","默认评论显示顺序");
-define("_MD_AM_ALLOWHTML","允许的HTML标记的用户意见" );
+define("_MD_AM_ALLOWHTML","允许的HTML标记的用户意见");
 define("_MD_AM_DEBUGMODE","调试模式");
 define("_MD_AM_DEBUGMODEDSC","几个调试选项。当前正在运行的网站应该有这个关闭的。");
  
-define("_MD_AM_AVATARALLOW","允许自定义头像上传" );
+define("_MD_AM_AVATARALLOW","允许自定义头像上传");
 define("_MD_AM_AVATARMP","最低员额需要");
 define("_MD_AM_AVATARMPDSC","输入的最低人数要求的职位上载自定义头像");
 define("_MD_AM_AVATARW","头像图片最大宽度（像素）");
@@ -87,15 +87,15 @@ define("_MD_AM_AVATARMAX","化身形象最大文件大小（字节）");
 define("_MD_AM_AVATARCONF","自定义头像设置");
 define("_MD_AM_CHNGUTHEME","变更所有用户的主题是：");
 define("_MD_AM_NOTIFYTO","选择组的通知,新用户的邮件将发送");
-define("_MD_AM_ALLOWTHEME","允许用户选择的主题" );
-define("_MD_AM_ALLOWIMAGE","允许用户显示图像文件的帖子" );
+define("_MD_AM_ALLOWTHEME","允许用户选择的主题");
+define("_MD_AM_ALLOWIMAGE","允许用户显示图像文件的帖子");
 define("_MD_AM_USERACTV","需要激活的用户（推荐）");
 define("_MD_AM_AUTOACTV","启用自动");
 define("_MD_AM_ADMINACTV","激活系统管理员");
 define("_MD_AM_ACTVTYPE","选择激活类型的新注册用户");
 define("_MD_AM_ACTVGROUP","选择组的激活邮件将发送");
 define("_MD_AM_ACTVGROUPDSC","有效期只有当'激活管理员'被选中");
-define("_MD_AM_USESSL","使用SSL登入" );
+define("_MD_AM_USESSL","使用SSL登入");
 define("_MD_AM_SSLPOST","变量名后的SSL");
 define("_MD_AM_SSLPOSTDSC","这个名字的变量,用于转移会议价值通过职务。如果你不确定,设置任何名义很难猜测。");
  
@@ -107,7 +107,7 @@ define("_MD_AM_MINUNAME","最低限度的用户名长度的要求");
 define("_MD_AM_MAXUNAME","最大长度的用户名");
 define("_MD_AM_GENERAL","常规设置");
 define("_MD_AM_USERSETTINGS","用户信息设置");
-define("_MD_AM_ALLWCHGMAIL","允许用户更改电邮地址" );
+define("_MD_AM_ALLWCHGMAIL","允许用户更改电邮地址");
 define("_MD_AM_ALLWCHGMAILDSC","");
 define("_MD_AM_IPBAN","知识产权班宁");
 define("_MD_AM_BADEMAILS","输入电子邮件,不应被用来在用户配置文件");
@@ -117,7 +117,7 @@ define("_MD_AM_BADEMAILSDSC","每一个单独的<strong> |/强',区分大小写,
 define("_MD_AM_BADUNAMES","输入名称,不应被选定为用户名");
 define("_MD_AM_BADUNAMESDSC","每一个单独的<strong> |/强',区分大小写,正则启用。");
  
-define("_MD_AM_DOBADIPS","启用IP禁令" );
+define("_MD_AM_DOBADIPS","启用IP禁令");
 define("_MD_AM_DOBADIPSDSC","用户指定的IP地址将无法查看您的网站");
 define("_MD_AM_BADIPS","输入IP地址,应该被禁止的网站。 <br />每个单独的<strong> |/强',区分大小写,正则启用。");
  
@@ -150,7 +150,7 @@ define("_MD_AM_FOOTER","页脚");
 define("_MD_AM_FOOTERDSC","一定要输入完整路径环节从http:// ,否则链接将无法正常工作的模块的网页。");
  
 define("_MD_AM_CENSOR","词截选项");
-define("_MD_AM_DOCENSOR","启用审查意外的话" );
+define("_MD_AM_DOCENSOR","启用审查意外的话");
 define("_MD_AM_DOCENSORDSC","词将审查如果启用这个选项。此选项可能会被关闭,加强网站的速度。");
  
 define("_MD_AM_CENSORWRD","词检查员");
@@ -159,22 +159,22 @@ define("_MD_AM_CENSORWRDDSC","输入字词,应审查用户员额。 <br />每个
 define("_MD_AM_CENSORRPLC","错误的话将改为：");
 define("_MD_AM_CENSORRPLCDSC","截断的话将被取代的字符输入到这个文本");
 define("_MD_AM_SEARCH","搜索选项");
-define("_MD_AM_DOSEARCH","启用全球搜索" );
+define("_MD_AM_DOSEARCH","启用全球搜索");
 define("_MD_AM_DOSEARCHDSC","允许搜索职位/项目在您的网站。");
  
 define("_MD_AM_MINSEARCH","最低的关键字长度");
 define("_MD_AM_MINSEARCHDSC","输入的关键字的最低长度,用户需要输入执行搜寻");
 define("_MD_AM_MODCONFIG","模块配置选项");
-define("_MD_AM_DSPDSCLMR","显示免责" );
+define("_MD_AM_DSPDSCLMR","显示免责");
 define("_MD_AM_DSPDSCLMRDSC","选择是显示声明的注册页面");
 define("_MD_AM_REGDSCLMR","注册声明");
 define("_MD_AM_REGDSCLMRDSC","输入文字显示为登记声明");
-define("_MD_AM_ALLOWREG","允许新用户注册" );
+define("_MD_AM_ALLOWREG","允许新用户注册");
 define("_MD_AM_ALLOWREGDSC","选择是否接受新用户注册");
-define("_MD_AM_THEMEFILE","检查模板的修改" );
+define("_MD_AM_THEMEFILE","检查模板的修改");
 define("_MD_AM_THEMEFILEDSC","如果启用这个选项,修改模板,将自动重新编译时,会显示。您必须关闭此选项的一个生产基地。");
  
-define("_MD_AM_CLOSESITE","开启您的网站吗" );
+define("_MD_AM_CLOSESITE","开启您的网站吗");
 define("_MD_AM_CLOSESITEDSC","选择是把您的网站关闭,使用户只在选定的群体进入的网站。");
  
 define("_MD_AM_CLOSESITEOK","选择组,允许访问,而该网站被关闭。");
@@ -205,7 +205,7 @@ define("_MD_AM_MAILFROMNAME","从名称");
 define("_MD_AM_MAILFROMNAMEDESC","");
 //花叶病毒,通知
 define("_MD_AM_MAILFROMUID","用户");
-define("_MD_AM_MAILFROMUIDDESC","当该系统发出了一个私人信息,用户应似乎已经发出了吗" );
+define("_MD_AM_MAILFROMUIDDESC","当该系统发出了一个私人信息,用户应似乎已经发出了吗");
 define("_MD_AM_MAILERMETHOD","邮件派递法");
 define("_MD_AM_MAILERMETHODDESC","采用的方法传递邮件。默认是\"邮件\",利用他人只有在该制造麻烦。");
  
