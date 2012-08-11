@@ -55,29 +55,29 @@ define("_AM_RUSUREDEL","您确定要删除块的<strong>的%s/强烈>?");
 define("_AM_NAME","姓名");
 define("_AM_USEFULTAGS","有用的标签：");
 define("_AM_BLOCKTAG1","%s将打印的%s");
-define( "_AM_SVISIBLEIN","块可见在%s ");
-define( "_AM_TOPPAGE","首页");
-define( "_AM_VISIBLEIN","明显");
-define( "_AM_ALLPAGES","所有页面");
-define( "_AM_TOPONLY","首页只有");
-define( "_AM_ADVANCED","高级设置");
-define( "_AM_BCACHETIME","缓存一生");
-define( "_AM_BALIAS","别名");
-define( "_AM_CLONE","克隆");
+define("_AM_SVISIBLEIN","块可见在%s ");
+define("_AM_TOPPAGE","首页");
+define("_AM_VISIBLEIN","明显");
+define("_AM_ALLPAGES","所有页面");
+define("_AM_TOPONLY","首页只有");
+define("_AM_ADVANCED","高级设置");
+define("_AM_BCACHETIME","缓存一生");
+define("_AM_BALIAS","别名");
+define("_AM_CLONE","克隆");
 //克隆块
-define( "_AM_CLONEBLK","克隆");
+define("_AM_CLONEBLK","克隆");
 //克隆块
-define( "_AM_CLONEBLOCK","创造出块");
-define( "_AM_NOTSELNG","%s的'未选中！");
+define("_AM_CLONEBLOCK","创造出块");
+define("_AM_NOTSELNG","%s的'未选中！");
 //错误信息
-define( "_AM_EDITTPL","编辑模板");
-define( "_AM_MODULE","模块");
-define( "_AM_GROUP","团体访问");
-define( "_AM_UNASSIGNED","未分配");
-define( "_AM_DOMAINSIN","域");
-define( "_AM_DOMAINSINSEL","域： %s的");
+define("_AM_EDITTPL","编辑模板");
+define("_AM_MODULE","模块");
+define("_AM_GROUP","团体访问");
+define("_AM_UNASSIGNED","未分配");
+define("_AM_DOMAINSIN","域");
+define("_AM_DOMAINSINSEL","域： %s的");
  
 define("_AM_CUSTOM","自定义块");
-define( "_AM_GENERATOR","块所产生的%s ");
-define( "_AM_TYPES","所有类型");
+define("_AM_GENERATOR","块所产生的%s ");
+define("_AM_TYPES","所有类型");
 ?>

@@ -42,5 +42,5 @@ define("MB_MULTISITE_SECURE","安全登录");
 define("MB_MULTISITE_NUMTHEME","%s的主题");
 define("MB_MULTISITE_THSHOW","显示屏幕图像");
 define("MB_MULTISITE_THWIDTH","截图图片宽度");
-define( "_MB_MULTISITE_REMEMBERME","记住我");
+define("_MB_MULTISITE_REMEMBERME","记住我");
 ?>
