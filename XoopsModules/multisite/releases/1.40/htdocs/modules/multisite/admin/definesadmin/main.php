@@ -145,7 +145,7 @@ if ( !is_object($xoopsUser) || !is_object($xoopsModule) || !$xoopsUser->isAdmin(
 
 				$eletray[$domain_out->getVar('dom_id')] = new XoopsFormElementTray(htmlspecialchars($define->getConfValueForOutput()), "&nbsp;");
 				$eletray[$domain_out->getVar('dom_id')]->addElement(new XoopsFormText('', 'define_var['.$domain_out->getVar('dom_id').']', 50, 255,htmlspecialchars($domain_out->getConfValueForOutput())));
-				$eletray[$domain_out->getVar('dom_id')]->addElement(new XoopsFormLabel('', "<a href='admin.php?fct=$fct&op=edit&define_id=".$domain_out->getVar('dom_id')."&domain=".urlencode($domain)."'>"._EDIT."</a>&nbsp;<a href='admin.php?fct=$fct&op=delete&define_id=".$domain_out->getVar('dom_id')."&domain=".urlencode($domain)."'>"._DELETE."</a>"));
+				$eletray[$domain_out->getVar('dom_id')]->addElement(new XoopsFormLabel('',"<a href='admin.php?fct=$fct&op=edit&define_id=".$domain_out->getVar('dom_id')."&domain=".urlencode($domain)."'>"._EDIT."</a>&nbsp;<a href='admin.php?fct=$fct&op=delete&define_id=".$domain_out->getVar('dom_id')."&domain=".urlencode($domain)."'>"._DELETE."</a>"));
 				$def_form->addElement($eletray[$domain_out->getVar('dom_id')]);	
 			}
 		}

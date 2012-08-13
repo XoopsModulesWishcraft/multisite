@@ -66,7 +66,7 @@ define('_AM_BALIAS', 'Alias name');
 define('_AM_CLONE', 'Clone');  // clone a block
 define('_AM_CLONEBLK', 'Clone'); // cloned block
 define('_AM_CLONEBLOCK', 'Create a clone block');
-define('_AM_NOTSELNG', "'%s' is not selected!"); // error message
+define('_AM_NOTSELNG',"'%s' is not selected!"); // error message
 define('_AM_EDITTPL', 'Edit Template');
 define('_AM_MODULE', 'Module');
 define('_AM_GROUP', 'Groups access');
